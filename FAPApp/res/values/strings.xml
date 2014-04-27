@@ -6,8 +6,8 @@
    <string name="hello_world">Hello world!</string>
    <string name="Username">Username</string>
    <string name="Password">Password</string>
-   <string name="LoginGet">Login - Get</string>
-   <string name="LoginPost">Login - Post</string>
+  
+   <string name="Login">Login</string>
    <string name="App">Login Application</string>
    <string name="LoginStatus">Login Status</string>
    <string name="LoginRole">Login Role</string>
@@ -15,5 +15,7 @@
    <string name="Role">Not assigned</string>
    <string name="method">Login Method</string>
    <string name="Choose">Choose Method</string>
+   <string name="ForgotPassword">Forgot Password</string>
+   <string name="Register">Register</string>
 
 </resources>

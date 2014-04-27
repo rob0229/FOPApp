@@ -34,28 +34,30 @@ public class SignInActivity  extends AsyncTask<String,Void,String>{
    }
    @Override
    protected String doInBackground(String... arg0) {
-      if(byGetOrPost == 0){ //means by Get Method
+	   //This code was referenced from http://www.tutorialspoint.com/android/android_php_mysql.htm
+	  
          try{
             String username = (String)arg0[0];
             String password = (String)arg0[1];
-            String link = "http://fapapp.bugs3.com/login.php?username="+username+"&password="+password;
-          //  URL url = new URL(link);
-            HttpClient client = new DefaultHttpClient();
-            HttpGet request = new HttpGet();
-            request.setURI(new URI(link));
-            HttpResponse response = client.execute(request);
-            BufferedReader in = new BufferedReader
-           (new InputStreamReader(response.getEntity().getContent()));
-
-           StringBuffer sb = new StringBuffer("");
-           String line="";
-           while ((line = in.readLine()) != null) {
-              sb.append(line);
-              break;
+            String link="http://fapapp.bugs3.com/loginpost.php";
+            String data  = URLEncoder.encode("username", "UTF-8")+ "=" + URLEncoder.encode(username, "UTF-8");
+            data += "&" + URLEncoder.encode("password", "UTF-8")+ "=" + URLEncoder.encode(password, "UTF-8");
+            URL url = new URL(link);
+            URLConnection conn = url.openConnection(); 
+            conn.setDoOutput(true); 
+            OutputStreamWriter wr = new OutputStreamWriter (conn.getOutputStream()); 
+            wr.write( data ); 
+            wr.flush(); 
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+            // Read Server Response
+            while((line = reader.readLine()) != null)
+            {
+               sb.append(line);
+               break;
             }
-            in.close();
-            System.out.println("Get Method returned: " +sb.toString());
-            
+            System.out.println("Login method returned: " + sb.toString());
             userNameQueryResult = sb.toString();
             
             //Serversfree returns an object with an advertisement string appended to the result, 
@@ -65,52 +67,15 @@ public class SignInActivity  extends AsyncTask<String,Void,String>{
             	if (userNameQueryResult.charAt(i) == '<')
             		break;
             	else 
-            		queryResult += userNameQueryResult.charAt(i);
-            	
+            		queryResult += userNameQueryResult.charAt(i);  	
             }
             
             System.out.println("Parsed queryResult is now: " +queryResult);
-            
-            
-            
-            
             return queryResult;
-      }catch(Exception e){
-         return new String("Exception: " + e.getMessage());
-      }
-      }
-      else{
-         try{
-            String username = (String)arg0[0];
-            String password = (String)arg0[1];
-            String link="http://myphpmysqlweb.hostei.com/loginpost.php";
-            String data  = URLEncoder.encode("username", "UTF-8") 
-            + "=" + URLEncoder.encode(username, "UTF-8");
-            data += "&" + URLEncoder.encode("password", "UTF-8") 
-            + "=" + URLEncoder.encode(password, "UTF-8");
-            URL url = new URL(link);
-            URLConnection conn = url.openConnection(); 
-            conn.setDoOutput(true); 
-            OutputStreamWriter wr = new OutputStreamWriter
-            (conn.getOutputStream()); 
-            wr.write( data ); 
-            wr.flush(); 
-            BufferedReader reader = new BufferedReader
-            (new InputStreamReader(conn.getInputStream()));
-            StringBuilder sb = new StringBuilder();
-            String line = null;
-            // Read Server Response
-            while((line = reader.readLine()) != null)
-            {
-               sb.append(line);
-               break;
-            }
-            System.out.println("Post method returned: " + sb.toString());
-            return sb.toString();
          }catch(Exception e){
-            return new String("Exception: " + e.getMessage());
+            return new String("Exception trying to access server: " + e.getMessage());
          }
-      }
+      //}
    }
    @Override
    protected void onPostExecute(String result){

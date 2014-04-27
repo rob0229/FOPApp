@@ -12,17 +12,17 @@ import android.widget.TextView;
 public class FAPApp extends Activity {
 
    private EditText usernameField,passwordField;
-   private TextView status,role,method;
+   private TextView status,role;
 
    @Override 
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_fapapp);
-      usernameField = (EditText)findViewById(R.id.editText1);
-      passwordField = (EditText)findViewById(R.id.editText2);
-      status = (TextView)findViewById(R.id.textView6);
-      role = (TextView)findViewById(R.id.textView7);
-      method = (TextView)findViewById(R.id.textView9);
+      usernameField = (EditText)findViewById(R.id.userNameField);
+      passwordField = (EditText)findViewById(R.id.passwordField);
+      status = (TextView)findViewById(R.id.loginStatusField);
+      role = (TextView)findViewById(R.id.loginRoleField);
+     
    }
    @Override
    public boolean onCreateOptionsMenu(Menu menu) {
@@ -30,17 +30,10 @@ public class FAPApp extends Activity {
       getMenuInflater().inflate(R.menu.fapapp, menu);
       return true;
    }
+  
    public void login(View view){
       String username = usernameField.getText().toString();
       String password = passwordField.getText().toString();
-      method.setText("Get Method");
-      new SignInActivity(this,status,role,0).execute(username,password);
-
-   }
-   public void loginPost(View view){
-      String username = usernameField.getText().toString();
-      String password = passwordField.getText().toString();
-      method.setText("Post Method");
       new SignInActivity(this,status,role,1).execute(username,password);
 
    }

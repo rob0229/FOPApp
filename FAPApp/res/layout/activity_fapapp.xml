@@ -7,136 +7,118 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-   <EditText
-      android:id="@+id/editText2"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignRight="@+id/editText1"
-      android:layout_below="@+id/editText1"
-      android:layout_marginTop="25dp"
-      android:ems="10"
-      android:inputType="textPassword" >
-   </EditText>
+    <EditText
+        android:id="@+id/passwordField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/userNameField"
+        android:layout_below="@+id/userNameField"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="textPassword" >
+    </EditText>
 
-   <EditText
-      android:id="@+id/editText1"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentRight="true"
-      android:layout_alignParentTop="true"
-      android:layout_marginTop="44dp"
-      android:ems="10" >
+    <EditText
+        android:id="@+id/userNameField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="44dp"
+        android:ems="10" >
 
-   <requestFocus android:layout_width="wrap_content" />
+        <requestFocus android:layout_width="wrap_content" />
+    </EditText>
 
-   </EditText>
+    <TextView
+        android:id="@+id/userNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/userNameField"
+        android:layout_alignParentLeft="true"
+        android:text="@string/Username" />
 
-   <TextView
-      android:id="@+id/textView1"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignBottom="@+id/editText1"
-      android:layout_alignParentLeft="true"
-      android:text="@string/Username" />
+    <TextView
+        android:id="@+id/loginPageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/App"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-   <TextView
-      android:id="@+id/textView3"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentTop="true"
-      android:layout_centerHorizontal="true"
-      android:text="@string/App"
-      android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/passwordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/passwordField"
+        android:layout_alignBottom="@+id/passwordField"
+        android:layout_alignParentLeft="true"
+        android:text="@string/Password" />
 
-   <Button
-      android:id="@+id/button1"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignBaseline="@+id/button2"
-      android:layout_alignBottom="@+id/button2"
-      android:layout_alignLeft="@+id/textView2"
-      android:onClick="login"
-      android:text="@string/LoginGet" />
+    <TextView
+        android:id="@+id/loginStatusField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/loginRoleField"
+        android:layout_alignLeft="@+id/loginRoleField"
+        android:text="@string/Status" />
 
-   <TextView
-      android:id="@+id/textView2"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignBaseline="@+id/editText2"
-      android:layout_alignBottom="@+id/editText2"
-      android:layout_alignParentLeft="true"
-      android:text="@string/Password" />
+    <TextView
+        android:id="@+id/loginRole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="34dp"
+        android:text="@string/LoginRole" />
 
-   <TextView
-       android:id="@+id/textView6"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignBaseline="@+id/textView4"
-       android:layout_alignBottom="@+id/textView4"
-       android:layout_toLeftOf="@+id/editText2"
-       android:text="@string/Status"
-       android:textAppearance="?android:attr/textAppearanceMedium"
-       android:textSize="16sp" />
+    <TextView
+        android:id="@+id/loginRoleField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/loginRole"
+        android:layout_alignBottom="@+id/loginRole"
+        android:layout_alignRight="@+id/passwordField"
+        android:text="@string/Role"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="16sp" />
 
-   <TextView
-       android:id="@+id/textView5"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignLeft="@+id/textView6"
-       android:layout_below="@+id/textView6"
-       android:layout_marginTop="25dp"
-       android:text="@string/LoginRole" />
+    <TextView
+        android:id="@+id/loginStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/loginStatusField"
+        android:layout_alignBottom="@+id/loginStatusField"
+        android:layout_alignParentLeft="true"
+        android:text="@string/LoginStatus" />
 
-   <TextView
-       android:id="@+id/textView4"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignRight="@+id/textView8"
-       android:layout_below="@+id/textView8"
-       android:layout_marginTop="30dp"
-       android:text="@string/LoginStatus" />
+    <Button
+        android:id="@+id/registerbtn"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:text="@string/Register"
+        android:textColor="#000000" />
 
-   <TextView
-       android:id="@+id/textView7"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignBaseline="@+id/textView5"
-       android:layout_alignBottom="@+id/textView5"
-       android:layout_alignLeft="@+id/textView4"
-       android:text="@string/Role"
-       android:textAppearance="?android:attr/textAppearanceMedium"
-       android:textSize="16sp" />
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/passwordField"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:onClick="login"
+        android:text="@string/Login" />
 
-   <TextView
-       android:id="@+id/textView9"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignLeft="@+id/textView6"
-       android:layout_alignParentLeft="true"
-       android:layout_below="@+id/button1"
-       android:layout_margin="10dp"
-       android:layout_marginTop="46dp"
-       android:text="@string/Choose"
-       android:textAppearance="?android:attr/textAppearanceMedium"
-       android:textSize="16sp" />
-
-   <TextView
-       android:id="@+id/textView8"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignBaseline="@+id/textView9"
-       android:layout_alignBottom="@+id/textView9"
-       android:layout_marginLeft="40dp"
-       android:layout_toRightOf="@+id/textView9"
-       android:text="@string/method" />
-
-   <Button
-       android:id="@+id/button2"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignRight="@+id/textView7"
-       android:layout_centerVertical="true"
-       android:onClick="loginPost"
-       android:text="@string/LoginPost" />
+    <Button
+        android:id="@+id/login"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/registerbtn"
+        android:layout_centerHorizontal="true"
+        android:text="@string/ForgotPassword"
+        android:textColor="#000000" />
 
 </RelativeLayout>
