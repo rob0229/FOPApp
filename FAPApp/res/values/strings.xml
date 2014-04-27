@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Freshman Abduction Program App (F.A.P. App)</string>
+    <string name="app_name">F.A.P. App</string>
     <string name="action_settings">Settings</string>
-    <string name="Username">Username</string>
+    <string name="EnterFapTitle">Welcome to the FAP App</string>
     <string name="Password">Password</string>
     <string name="FirstName">First Name</string>
     <string name="LastName">Last Name</string>
@@ -24,5 +24,9 @@
     <string name="RegisteredAt">Registered at</string>
     <string name="RegDetails">Your Registration Details</string>
     <string name="Congrats">Congratulations, you have registered</string>
-
+	<string name="ResetPass">Reset Your Password</string>
+	<string name="EnterEmail">Enter your Email Id</string>
+	<string name="Reset">Reset</string>
+	<string name="LogoutBtnTitle">Logout</string>
+	<string name="Cancel">Cancel</string>
 </resources>

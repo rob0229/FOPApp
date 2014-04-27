@@ -11,18 +11,20 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.TextView;
 
-public class SignInActivity  extends AsyncTask<String,Void,String>{
-	private String userNameQueryResult, queryResult ="";
+public class LoginActivity  extends AsyncTask<String,Void,String>{
+	private String userNameQueryResult, queryResult = "";
    private TextView statusField,roleField;
    private Context context;
    
    //flag 0 means get and 1 means post.(By default it is get.)
-   public SignInActivity(Context context, TextView statusField, TextView roleField) {
+   public LoginActivity(Context context, TextView statusField, TextView roleField) {
       this.context = context;
       this.statusField = statusField;
       this.roleField = roleField;
@@ -37,10 +39,10 @@ public class SignInActivity  extends AsyncTask<String,Void,String>{
 	   //This code was referenced from http://www.tutorialspoint.com/android/android_php_mysql.htm
 	  
          try{
-            String username = (String)arg0[0];
+            String email = (String)arg0[0];
             String password = (String)arg0[1];
-            String link="http://fapapp.bugs3.com/loginpost.php";
-            String data  = URLEncoder.encode("username", "UTF-8")+ "=" + URLEncoder.encode(username, "UTF-8");
+            String link="http://fapapp.bugs3.com/login.php";
+            String data  = URLEncoder.encode("email", "UTF-8")+ "=" + URLEncoder.encode(email, "UTF-8");
             data += "&" + URLEncoder.encode("password", "UTF-8")+ "=" + URLEncoder.encode(password, "UTF-8");
             URL url = new URL(link);
             URLConnection conn = url.openConnection(); 
@@ -52,12 +54,17 @@ public class SignInActivity  extends AsyncTask<String,Void,String>{
             StringBuilder sb = new StringBuilder();
             String line = null;
             // Read Server Response
+            
+            //PLAY GROUND
+           // JSONObject json = new JSONObject();
+            //END PLAYGROUND
+            
             while((line = reader.readLine()) != null)
             {
                sb.append(line);
                break;
             }
-            System.out.println("Login method returned: " + sb.toString());
+            System.out.println("*****Login method returned: " + sb.toString());
             userNameQueryResult = sb.toString();
             
             //Serversfree returns an object with an advertisement string appended to the result, 
@@ -81,8 +88,7 @@ public class SignInActivity  extends AsyncTask<String,Void,String>{
    protected void onPostExecute(String result){
 	   
 	   //change screens here to the next activity
-	   
-	   
+	   	   
 	  //this is for testing to ensure we are getting the server database info 
       this.statusField.setText("Login Successful");
       this.roleField.setText(result);

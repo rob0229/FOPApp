@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -42,7 +42,7 @@
             android:textColor="#000000"
             android:id="@+id/textView5"
             android:layout_below="@+id/textView3"
-            android:textSize="15dp"
+            android:textSize="@dimen/standard_text_size"
             android:layout_toLeftOf="@+id/fname"/>
     <TextView
             android:layout_width="200dp"
@@ -51,7 +51,7 @@
             android:textColor="#000000"
             android:layout_below="@+id/textView3"
             android:layout_toRightOf="@+id/textView5"
-            android:textSize="15dp"/>
+            android:textSize="@dimen/standard_text_size"/>
     <TextView
             android:layout_width="125dp"
             android:layout_height="40dp"
@@ -60,7 +60,7 @@
             android:id="@+id/textView7"
             android:layout_below="@+id/textView5"
             android:layout_toLeftOf="@+id/textView2"
-            android:textSize="15dp"/>
+            android:textSize="@dimen/standard_text_size"/>
     <TextView
             android:layout_width="200dp"
             android:layout_height="40dp"
@@ -68,15 +68,15 @@
             android:textColor="#000000"
             android:layout_below="@+id/textView5"
             android:layout_alignLeft="@+id/fname"
-            android:textSize="15dp"/>
+            android:textSize="@dimen/standard_text_size"/>
     <TextView
             android:layout_width="125dp"
             android:layout_height="40dp"
-            android:text="@string/Username"
+            android:text="@string/Email"
             android:textColor="#000000"
             android:id="@+id/textView9"
             android:layout_below="@+id/textView7"
-            android:textSize="15dp"
+            android:textSize="@dimen/standard_text_size"
             android:textIsSelectable="false"/>
 
     <TextView
@@ -84,7 +84,7 @@
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:textColor="#000000"
-        android:textSize="15dp" />
+        android:textSize="@dimen/standard_text_size" />
 
     <TextView
             android:layout_width="125dp"
@@ -94,7 +94,7 @@
             android:textColor="#000000"
             android:layout_below="@+id/textView9"
             android:layout_toLeftOf="@+id/uname"
-            android:textSize="15dp"/>
+            android:textSize="@dimen/standard_text_size"/>
     <TextView
             android:layout_width="200dp"
             android:layout_height="40dp"
@@ -102,7 +102,7 @@
             android:textColor="#000000"
             android:layout_below="@+id/textView9"
             android:layout_alignRight="@+id/lname"
-            android:textSize="15dp"/>
+            android:textSize="@dimen/standard_text_size"/>
     <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
@@ -110,8 +110,8 @@
             android:id="@+id/login"
             android:textColor="#000000"
             android:layout_below="@+id/textView11"
-            android:textSize="13dp"
+            android:textSize="@dimen/label_text_size"
             android:layout_alignRight="@+id/lname"
             android:layout_alignParentLeft="true"/>
 
-</LinearLayout>
+</RelativeLayout>

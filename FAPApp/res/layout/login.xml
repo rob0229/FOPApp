@@ -7,15 +7,16 @@
         android:id="@+id/passwordField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/userNameField"
-        android:layout_below="@+id/userNameField"
+        android:layout_alignRight="@+id/emailField"
+        android:layout_below="@+id/emailField"
         android:layout_marginTop="25dp"
         android:ems="10"
         android:inputType="textPassword" >
     </EditText>
 
     <EditText
-        android:id="@+id/userNameField"
+        android:id="@+id/emailField"
+        android:inputType="textEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -28,12 +29,12 @@
     </EditText>
 
     <TextView
-        android:id="@+id/userNameLabel"
+        android:id="@+id/emailLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/userNameField"
+        android:layout_alignBottom="@+id/emailField"
         android:layout_alignParentLeft="true"
-        android:text="@string/Username" />
+        android:text="@string/Email" />
 
     <TextView
         android:id="@+id/loginPageTitle"
@@ -97,6 +98,14 @@
         android:layout_alignLeft="@+id/registerbtn"
         android:layout_below="@+id/passwordField"
         android:text="@string/Login" />
+    
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            android:id="@+id/loginErrorMsg"
+            android:textColor="#000000"
+            android:layout_below="@+id/passresetbtn"
+            android:layout_alignParentLeft="true"/>
 
     <Button
         android:id="@+id/registerbtn"
