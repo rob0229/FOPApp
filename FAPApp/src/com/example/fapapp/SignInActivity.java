@@ -20,13 +20,13 @@ public class SignInActivity  extends AsyncTask<String,Void,String>{
 	private String userNameQueryResult, queryResult ="";
    private TextView statusField,roleField;
    private Context context;
-   private int byGetOrPost = 0; 
+   
    //flag 0 means get and 1 means post.(By default it is get.)
-   public SignInActivity(Context context, TextView statusField, TextView roleField,int flag) {
+   public SignInActivity(Context context, TextView statusField, TextView roleField) {
       this.context = context;
       this.statusField = statusField;
       this.roleField = roleField;
-      byGetOrPost = flag;
+     
    }
 
    protected void onPreExecute(){
@@ -75,12 +75,16 @@ public class SignInActivity  extends AsyncTask<String,Void,String>{
          }catch(Exception e){
             return new String("Exception trying to access server: " + e.getMessage());
          }
-      //}
+      
    }
    @Override
    protected void onPostExecute(String result){
+	   
+	   //change screens here to the next activity
+	   
+	   
+	  //this is for testing to ensure we are getting the server database info 
       this.statusField.setText("Login Successful");
-      System.out.println("Inside the onPostExecute************************************");
       this.roleField.setText(result);
    }
 }
