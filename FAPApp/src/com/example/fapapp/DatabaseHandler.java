@@ -11,9 +11,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
-    private static final String DATABASE_NAME = "learn2crack_login";
+    private static final String DATABASE_NAME = "u276339830_fap";
     // Login table name
-    private static final String TABLE_LOGIN = "login";
+    private static final String TABLE_LOGIN = "table1";
     // Login Table Columns names
     private static final String KEY_ID = "id";
     private static final String KEY_FIRSTNAME = "fname";
@@ -73,8 +73,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Move to first row
         cursor.moveToFirst();
         if(cursor.getCount() > 0){
-            user.put("fname", cursor.getString(1));
-            user.put("lname", cursor.getString(2));
+            user.put("fName", cursor.getString(1));
+            user.put("lName", cursor.getString(2));
             user.put("email", cursor.getString(3));
             user.put("uname", cursor.getString(4));
             user.put("uid", cursor.getString(5));

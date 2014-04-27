@@ -38,7 +38,7 @@ public class Register extends Activity {
     private static String KEY_UID = "uid";
     private static String KEY_FIRSTNAME = "fname";
     private static String KEY_LASTNAME = "lname";
-    private static String KEY_USERNAME = "uname";
+    private static String KEY_MENTOR = "mentor";
     private static String KEY_EMAIL = "email";
     private static String KEY_CREATED_AT = "created_at";
     private static String KEY_ERROR = "error";
@@ -47,10 +47,11 @@ public class Register extends Activity {
      **/
     EditText inputFirstName;
     EditText inputLastName;
-    EditText inputUsername;
+    EditText inputMentor;
     EditText inputEmail;
     EditText inputPassword;
     Button btnRegister;
+    Button backToLoginBtn;
     TextView registerErrorMsg;
     /**
      * Called when the activity is first created.
@@ -64,16 +65,17 @@ public class Register extends Activity {
      **/
         inputFirstName = (EditText) findViewById(R.id.fname);
         inputLastName = (EditText) findViewById(R.id.lname);
-        inputUsername = (EditText) findViewById(R.id.uname);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.pword);
+        inputMentor = (EditText) findViewById(R.id.mentor);
         btnRegister = (Button) findViewById(R.id.register);
+        backToLoginBtn = (Button) findViewById(R.id.bktologin);
         registerErrorMsg = (TextView) findViewById(R.id.register_error);
 /**
  * Button which Switches back to the login screen on clicked
  **/
-        Button login = (Button) findViewById(R.id.bktologin);
-        login.setOnClickListener(new View.OnClickListener() {
+        
+        backToLoginBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), Login.class);
                 startActivityForResult(myIntent, 0);
@@ -88,15 +90,15 @@ public class Register extends Activity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (  ( !inputUsername.getText().toString().equals("")) && ( !inputPassword.getText().toString().equals("")) && ( !inputFirstName.getText().toString().equals("")) && ( !inputLastName.getText().toString().equals("")) && ( !inputEmail.getText().toString().equals("")) )
+                if (  ( !inputMentor.getText().toString().equals("")) && ( !inputPassword.getText().toString().equals("")) && ( !inputFirstName.getText().toString().equals("")) && ( !inputLastName.getText().toString().equals("")) && ( !inputEmail.getText().toString().equals("")) )
                 {
-                    if ( inputUsername.getText().toString().length() > 4 ){
+                    if ( inputMentor.getText().toString().length() > 2 ){
                     NetAsync(view);
                     }
                     else
                     {
                         Toast.makeText(getApplicationContext(),
-                                "Username should be minimum 5 characters", Toast.LENGTH_SHORT).show();
+                                "Username should be minimum 2 characters", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else
@@ -166,16 +168,16 @@ public class Register extends Activity {
  * Defining Process dialog
  **/
         private ProgressDialog pDialog;
-        String email,password,fname,lname,uname;
+        String email,password,fname,lname, mentor;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            inputUsername = (EditText) findViewById(R.id.uname);
+            
             inputPassword = (EditText) findViewById(R.id.pword);
                fname = inputFirstName.getText().toString();
                lname = inputLastName.getText().toString();
                 email = inputEmail.getText().toString();
-                uname= inputUsername.getText().toString();
+                
                 password = inputPassword.getText().toString();
             pDialog = new ProgressDialog(Register.this);
             pDialog.setTitle("Contacting Servers");
@@ -187,7 +189,7 @@ public class Register extends Activity {
         
         protected Object doInBackground(Object... args) {
         UserFunctions userFunction = new UserFunctions();
-        JSONObject json = userFunction.registerUser(fname, lname, email, uname, password);
+        JSONObject json = userFunction.registerUser(fname, lname, email, mentor, password);
             return json;
         }
       
@@ -211,7 +213,7 @@ public class Register extends Activity {
                              **/
                             UserFunctions logout = new UserFunctions();
                             logout.logoutUser(getApplicationContext());
-                            db.addUser(json_user.getString(KEY_FIRSTNAME),json_user.getString(KEY_LASTNAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_USERNAME),json_user.getString(KEY_UID),json_user.getString(KEY_CREATED_AT));
+                            db.addUser(json_user.getString(KEY_FIRSTNAME),json_user.getString(KEY_LASTNAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_MENTOR),json_user.getString(KEY_UID),json_user.getString(KEY_CREATED_AT));
                             /**
                              * Stores registered data in SQlite Database
                              * Launch Registered screen

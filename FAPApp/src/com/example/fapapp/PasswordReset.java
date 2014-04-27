@@ -1,5 +1,13 @@
 package com.example.fapapp;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -12,13 +20,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 public class PasswordReset extends Activity {
 private static String KEY_SUCCESS = "success";
 private static String KEY_ERROR = "error";
@@ -42,15 +43,15 @@ private static String KEY_ERROR = "error";
         });
         email = (EditText) findViewById(R.id.forpas);
         alert = (TextView) findViewById(R.id.alert);
-        resetpass = (Button) findViewById(R.id.respass);
+        resetpass = (Button) findViewById(R.id.resetpassbtn);
         resetpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // NetAsync(view);
+                NetAsync(view);
             }
         });}
     
-    /*
+    
     private class NetCheck extends AsyncTask
                 {
                     private ProgressDialog nDialog;
@@ -124,7 +125,7 @@ private static String KEY_ERROR = "error";
                   /**
                    * Checks if the Password Change Process is sucesss
                    **/
-/*    
+   
                         try {
                             if (json.getString(KEY_SUCCESS) != null) {
                                 alert.setText("");
@@ -150,5 +151,5 @@ private static String KEY_ERROR = "error";
             public void NetAsync(View view){
                 new NetCheck().execute();
             }
-            */
+            
 }

@@ -9,10 +9,10 @@ import android.content.Context;
 public class UserFunctions {
     private JSONParser jsonParser;
     //URL of the PHP API
-    private static String loginURL = "http://10.0.2.2/learn2crack_login_api/";
-    private static String registerURL = "http://10.0.2.2/learn2crack_login_api/";
-    private static String forpassURL = "http://10.0.2.2/learn2crack_login_api/";
-    private static String chgpassURL = "http://10.0.2.2/learn2crack_login_api/";
+    private static String loginURL = "http://fapapp.bugs3.com/login_api/";
+    private static String registerURL = "http://fapapp.bugs3.com/login_api/";
+    private static String forpassURL = "http://fapapp.bugs3.com/login_api/";
+    private static String chgpassURL = "http://fapapp.bugs3.com/login_api/";
     private static String login_tag = "login";
     private static String register_tag = "register";
     private static String forpass_tag = "forpass";
@@ -57,15 +57,15 @@ public class UserFunctions {
      /**
       * Function to  Register
       **/
-    public JSONObject registerUser(String fname, String lname, String email, String uname, String password){
+    public JSONObject registerUser(String fname, String lname, String email, String mentor, String password){
         // Building Parameters
         List params = new ArrayList();
         params.add(new BasicNameValuePair("tag", register_tag));
         params.add(new BasicNameValuePair("fname", fname));
         params.add(new BasicNameValuePair("lname", lname));
         params.add(new BasicNameValuePair("email", email));
-        params.add(new BasicNameValuePair("uname", uname));
         params.add(new BasicNameValuePair("password", password));
+        params.add(new BasicNameValuePair("mentor", mentor));
         JSONObject json = jsonParser.getJSONFromUrl(registerURL,params);
         return json;
     }
