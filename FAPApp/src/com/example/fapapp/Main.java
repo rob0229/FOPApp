@@ -22,7 +22,7 @@ public class Main extends Activity {
         btnLogout = (Button) findViewById(R.id.logout);
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
         /**
-         * Hashmap to load data from the Sqlite database
+         * Hashmap to load data from the  database
          **/
          HashMap user = new HashMap();
          user = db.getUserDetails();

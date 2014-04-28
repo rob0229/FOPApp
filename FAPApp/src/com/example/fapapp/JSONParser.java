@@ -32,6 +32,7 @@ public class JSONParser {
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
             is = httpEntity.getContent();
+            System.out.println("******* JSONPARSER Line 35 \"is\" : "+ is.toString());
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (ClientProtocolException e) {
@@ -40,13 +41,16 @@ public class JSONParser {
             e.printStackTrace();
         }
         try {
+        	System.out.println("*****************JSONPARSER.Java LINE 43 GETS HERE***********************");
             BufferedReader reader = new BufferedReader(new InputStreamReader(
                     is, "iso-8859-1"), 8);
             StringBuilder sb = new StringBuilder();
+            
             String line = null;
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "n");
             }
+            System.out.println("*****************JSONPARSER.Java LINE 52 SB = " +sb.toString());
             is.close();
             json = sb.toString();
             Log.e("JSON", json);
@@ -57,7 +61,7 @@ public class JSONParser {
         try {
             jObj = new JSONObject(json);
         } catch (JSONException e) {
-            Log.e("JSON Parser", "Error parsing data " + e.toString());
+            Log.e("JSON Parser", "******** JSONPARSER.Java LINE 62 Error parsing data " + e.toString());
         }
         // return JSON String
         return jObj;

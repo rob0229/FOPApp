@@ -30,7 +30,9 @@ public class UserFunctions {
         params.add(new BasicNameValuePair("tag", login_tag));
         params.add(new BasicNameValuePair("email", email));
         params.add(new BasicNameValuePair("password", password));
+        System.out.println("**************** UserFunction Line 33 *****  loginURL: " + loginURL);
         JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
+        System.out.println("**************** UserFunction Line 35 *****  gets past getJSONFromURL function call: " + json);
         return json;
     }
     /**
