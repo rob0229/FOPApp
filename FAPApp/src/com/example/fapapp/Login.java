@@ -28,11 +28,11 @@ import android.widget.Toast;
 public class Login extends Activity {
 	private static String KEY_SUCCESS = "success";
     private static String KEY_UID = "uid";
-    private static String KEY_USERNAME = "uname";
-    private static String KEY_FIRSTNAME = "fname";
-    private static String KEY_LASTNAME = "lname";
+    private static String KEY_MENTOR = "mentor";
+    private static String KEY_FIRSTNAME = "fName";
+    private static String KEY_LASTNAME = "lName";
     private static String KEY_EMAIL = "email";
-    private static String KEY_CREATED_AT = "created_at";
+    
 
    private EditText emailField,passwordField;
    private TextView status,role, loginErrorMsg;
@@ -95,7 +95,9 @@ public class Login extends Activity {
 	   
 	   if (  ( !emailField.getText().toString().equals("")) && ( !passwordField.getText().toString().equals("")) )
        {
-		   NetAsync(view);
+		  // NetAsync(view);
+		   new ProcessLogin().execute();
+		   
        }
        else if ( ( !emailField.getText().toString().equals("")) )
        {
@@ -117,6 +119,8 @@ public class Login extends Activity {
    /**
     * Async Task to check whether internet connection is working.
     **/
+   
+   /*
       private class NetCheck extends AsyncTask
       {
           private ProgressDialog nDialog;
@@ -135,6 +139,7 @@ public class Login extends Activity {
   /**
    * Gets current device state and checks for working internet connection by trying Google.
   **/
+   /*
               ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
               NetworkInfo netInfo = cm.getActiveNetworkInfo();
               if (netInfo != null && netInfo.isConnected()) {
@@ -177,8 +182,8 @@ public class Login extends Activity {
           @Override
           protected void onPreExecute() {
               super.onPreExecute();
-              emailField = (EditText) findViewById(R.id.email);
-              passwordField = (EditText) findViewById(R.id.pword);
+              emailField = (EditText) findViewById(R.id.emailField);
+              passwordField = (EditText) findViewById(R.id.passwordField);
               email = emailField.getText().toString();
               password = passwordField.getText().toString();
               pDialog = new ProgressDialog(Login.this);
@@ -189,7 +194,7 @@ public class Login extends Activity {
               pDialog.show();
           }
           @Override
-          protected Object doInBackground(Object... args) {
+          protected JSONObject doInBackground(Object... args) {
               UserFunctions userFunction = new UserFunctions();
               JSONObject json = userFunction.loginUser(email, password);
               return json;
@@ -209,7 +214,7 @@ public class Login extends Activity {
                            **/
                           UserFunctions logout = new UserFunctions();
                           logout.logoutUser(getApplicationContext());
-                          db.addUser(json_user.getString(KEY_FIRSTNAME),json_user.getString(KEY_LASTNAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_USERNAME),json_user.getString(KEY_UID),json_user.getString(KEY_CREATED_AT));
+                          db.addUser(json_user.getString(KEY_FIRSTNAME),json_user.getString(KEY_LASTNAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_MENTOR),json_user.getString(KEY_UID));
                          /**
                           *If JSON array details are stored in SQlite it launches the User Panel.
                           **/
@@ -231,8 +236,11 @@ public class Login extends Activity {
               }
          }
       }
+      
+      /*
       public void NetAsync(View view){
           new NetCheck().execute();
       }
+      */
    
 }

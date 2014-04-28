@@ -93,7 +93,8 @@ public class Register extends Activity {
                 if (  ( !inputMentor.getText().toString().equals("")) && ( !inputPassword.getText().toString().equals("")) && ( !inputFirstName.getText().toString().equals("")) && ( !inputLastName.getText().toString().equals("")) && ( !inputEmail.getText().toString().equals("")) )
                 {
                     if ( inputMentor.getText().toString().length() > 2 ){
-                    NetAsync(view);
+                    //NetAsync(view);
+                    new ProcessRegister().execute();
                     }
                     else
                     {
@@ -112,7 +113,7 @@ public class Register extends Activity {
     /**
      * Async Task to check whether internet connection is working
      **/
-    private class NetCheck extends AsyncTask
+   /* private class NetCheck extends AsyncTask
     {
         private ProgressDialog nDialog;
         @Override
@@ -130,7 +131,7 @@ public class Register extends Activity {
 /**
  * Gets current device state and checks for working internet connection by trying Google.
  **/
-            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+ /*           ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo netInfo = cm.getActiveNetworkInfo();
             if (netInfo != null && netInfo.isConnected()) {
                 try {
@@ -163,6 +164,8 @@ public class Register extends Activity {
             }
         }
     }
+    
+ */   
     private class ProcessRegister extends AsyncTask {
 /**
  * Defining Process dialog
@@ -213,7 +216,7 @@ public class Register extends Activity {
                              **/
                             UserFunctions logout = new UserFunctions();
                             logout.logoutUser(getApplicationContext());
-                            db.addUser(json_user.getString(KEY_FIRSTNAME),json_user.getString(KEY_LASTNAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_MENTOR),json_user.getString(KEY_UID),json_user.getString(KEY_CREATED_AT));
+                            db.addUser(json_user.getString(KEY_FIRSTNAME),json_user.getString(KEY_LASTNAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_MENTOR),json_user.getString(KEY_UID));
                             /**
                              * Stores registered data in SQlite Database
                              * Launch Registered screen
@@ -247,6 +250,9 @@ public class Register extends Activity {
 
 		
 		}
+    /*
         public void NetAsync(View view){
             new NetCheck().execute();
-        }}
+        }
+*/        
+}
