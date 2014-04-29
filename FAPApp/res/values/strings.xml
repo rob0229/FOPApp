@@ -39,6 +39,6 @@
 	<string name="answer3">C</string>
 	<string name="answer4">D</string>
 	<string name="TriviaTitle">Trivia Game</string>
-	
+	<string name="Trivia">Trivia</string>
 	
 </resources>

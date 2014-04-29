@@ -40,12 +40,12 @@ public final class R {
         public static final int answer2btn=0x7f08003c;
         public static final int answer3btn=0x7f08003d;
         public static final int answer4btn=0x7f08003e;
+        public static final int back=0x7f080038;
         public static final int backtoetf=0x7f08000e;
         public static final int bktolog=0x7f080025;
         public static final int bktologin=0x7f08002f;
         public static final int btcancel=0x7f080004;
         public static final int btchangepass=0x7f080003;
-        public static final int dataBaseStuff=0x7f08000a;
         public static final int email=0x7f080029;
         public static final int emailField=0x7f080010;
         public static final int emailLabel=0x7f080011;
@@ -54,7 +54,6 @@ public final class R {
         public static final int fname=0x7f080027;
         public static final int forpas=0x7f080021;
         public static final int hensonMapView=0x7f08000d;
-        public static final int homeBtn=0x7f080038;
         public static final int lname=0x7f08001e;
         public static final int login=0x7f080036;
         public static final int loginErrorMsg=0x7f08001a;
@@ -69,8 +68,8 @@ public final class R {
         public static final int mapbtn=0x7f080008;
         public static final int mentor=0x7f08002b;
         public static final int newpass=0x7f080002;
-        public static final int nextquestionbtn=0x7f080039;
-        public static final int nextquestionlabel=0x7f08003f;
+        public static final int nextquestionbtn=0x7f08003f;
+        public static final int nextquestionlabel=0x7f08003a;
         public static final int passResetTitle=0x7f08001f;
         public static final int passresetbtn=0x7f08001b;
         public static final int passwordField=0x7f08000f;
@@ -82,7 +81,7 @@ public final class R {
         public static final int registerbtn=0x7f080019;
         public static final int resetpassbtn=0x7f080022;
         public static final int respass=0x7f080024;
-        public static final int tableLayout1=0x7f08003a;
+        public static final int tableLayout1=0x7f080039;
         public static final int tableRow1=0x7f080007;
         public static final int tableRow2=0x7f080009;
         public static final int tableRow3=0x7f08000b;
@@ -96,6 +95,7 @@ public final class R {
         public static final int textView7=0x7f080031;
         public static final int textView9=0x7f080032;
         public static final int textwelcome=0x7f08001c;
+        public static final int trivia=0x7f08000a;
         public static final int triviaTitle=0x7f080037;
         public static final int uname=0x7f080033;
     }
@@ -141,6 +141,7 @@ public final class R {
         public static final int ResetPass=0x7f050017;
         public static final int Role=0x7f05000c;
         public static final int Status=0x7f05000b;
+        public static final int Trivia=0x7f050026;
         public static final int TriviaTitle=0x7f050025;
         public static final int action_settings=0x7f050001;
         public static final int answer1=0x7f050021;

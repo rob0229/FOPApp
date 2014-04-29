@@ -15,7 +15,7 @@
         android:text="@string/TriviaTitle" />
 
     <Button
-        android:id="@+id/homeBtn"
+        android:id="@+id/back"
         android:layout_width="@dimen/medium_button_width"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -23,19 +23,11 @@
         android:layout_marginBottom="21dp"
         android:text="@string/backToETFTitle" />
 
-    <Button
-        android:id="@+id/nextquestionbtn"
-        android:layout_width="@dimen/medium_button_width"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/homeBtn"
-        android:layout_alignLeft="@+id/homeBtn"
-        android:text="@string/NextQuestion" />
-
     <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/nextquestionbtn"
+        android:layout_below="@+id/nextquestionlabel"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp" >
 
@@ -81,9 +73,19 @@
         android:id="@+id/nextquestionlabel"
         android:layout_width="250dp"
         android:layout_height="200dp"
-        android:layout_above="@+id/tableLayout1"
+        android:layout_below="@+id/triviaTitle"
         android:layout_centerHorizontal="true"
+        android:gravity="center_vertical"
         android:text="@string/question"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/nextquestionbtn"
+        android:layout_width="@dimen/medium_button_width"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/back"
+        android:layout_below="@+id/tableLayout1"
+        android:text="@string/NextQuestion" />
 
 </RelativeLayout>
