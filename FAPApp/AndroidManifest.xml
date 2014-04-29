@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.fapapp.Login"
+            android:name="com.example.fapapp.EnterTheFap"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +42,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="EnterTheFap"
+            android:name="Login"
             android:label="@string/app_name" >
         </activity>
          <activity

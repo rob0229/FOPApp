@@ -1,41 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/gradbackground" >
 
     <TextView
         android:id="@+id/enterthefap"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:text="@string/EnterFapTitle"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    <Button
-        android:id="@+id/mapbtn"
-        android:layout_width="@dimen/large_button_width"
-        android:layout_below="@+id/enterthefap"
-        android:layout_height="50dp"
+
+    <TableLayout
+        android:layout_width="220dp"
+        android:layout_height="240dp"
         android:layout_centerHorizontal="true"
-        android:text="@string/mapBtnTitle"/>
+        android:layout_centerVertical="true" >
 
-    <Button
-        android:id="@+id/logoutbtn"
-        android:layout_width="@dimen/large_button_width"
-        android:layout_height="50dp"
-        android:layout_alignLeft="@+id/mapbtn"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="19dp"
-        android:text="@string/LogoutBtnTitle" />
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/mapbtn"
-        android:layout_alignRight="@+id/mapbtn"
-        android:layout_below="@+id/mapbtn"
-        android:layout_marginTop="64dp"
-        android:text="Button" />
-    
+            <Button
+                android:id="@+id/mapbtn"
+                android:layout_width="@dimen/large_button_width"
+                android:layout_height="@dimen/large_button_height"
+                android:text="@string/mapBtnTitle" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/dataBaseStuff"
+                android:layout_width="@dimen/large_button_width"
+                android:layout_height="@dimen/large_button_height"
+                android:text="Some database stuff" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/logoutbtn"
+                android:layout_width="@dimen/large_button_width"
+                android:layout_height="@dimen/large_button_height"
+                android:text="@string/LogoutBtnTitle" />
+        </TableRow>
+    </TableLayout>
+
 </RelativeLayout>

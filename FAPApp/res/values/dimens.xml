@@ -8,5 +8,7 @@
     <dimen name="standard_text_size">15dp</dimen>
     <dimen name="large_button_width">220dp</dimen>
     <dimen name="medium_button_width">170dp</dimen>
+    <dimen name="small_button_width">100dp</dimen>
+    <dimen name="large_button_height">80dp</dimen>
 
 </resources>

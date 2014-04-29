@@ -22,6 +22,16 @@ public class JSONParser {
     // constructor
     public JSONParser() {
     }
+    
+    public String getStringFromURL(String url, String email, String password){
+    	return "stuff";
+    }
+    
+    
+    
+    
+    
+    
     public JSONObject getJSONFromUrl(String url, List params) {
         // Making HTTP request
         try {

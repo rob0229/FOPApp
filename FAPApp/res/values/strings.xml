@@ -31,8 +31,14 @@
 	<string name="Cancel">Cancel</string>
 	<string name="mapBtnTitle">Map of Henson</string>
 	<string name="Mentor">Mentor/Mentee</string>
-	
-	
+	<string name="backToETFTitle">back</string>
+	<string name="question">click "next" for question</string>
+	<string name="NextQuestion">Next Question</string>
+	<string name="answer1">A</string>
+	<string name="answer2">B</string>
+	<string name="answer3">C</string>
+	<string name="answer4">D</string>
+	<string name="TriviaTitle">Trivia Game</string>
 	
 	
 </resources>

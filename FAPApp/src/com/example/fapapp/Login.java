@@ -35,7 +35,7 @@ public class Login extends Activity {
     
 
    private EditText emailField,passwordField;
-   private TextView status,role, loginErrorMsg;
+   private TextView status, role, loginErrorMsg;
    Button LoginButton;
    Button RegisterButton;
    Button passResetButton;
@@ -194,10 +194,11 @@ public class Login extends Activity {
               pDialog.show();
           }
           @Override
-          protected JSONObject doInBackground(Object... args) {
+          protected String doInBackground(Object... args) {
               UserFunctions userFunction = new UserFunctions();
-              JSONObject json = userFunction.loginUser(email, password);
-              return json;
+              String query = userFunction.loginUser(email, password);
+             // return json;
+        	  return query;
           }
           //@Override
           protected void onPostExecute(JSONObject json) {

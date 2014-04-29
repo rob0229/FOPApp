@@ -9,7 +9,7 @@ import android.content.Context;
 public class UserFunctions {
     private JSONParser jsonParser;
     //URL of the PHP API
-    private static String loginURL = "http://fapapp.bugs3.com/login_api/";
+    private static String loginURL = "http://fapapp.bugs3.com/query.php";
     private static String registerURL = "http://fapapp.bugs3.com/login_api/";
     private static String forpassURL = "http://fapapp.bugs3.com/login_api/";
     private static String chgpassURL = "http://fapapp.bugs3.com/login_api/";
@@ -24,16 +24,14 @@ public class UserFunctions {
     /**
      * Function to Login
      **/
-    public JSONObject loginUser(String email, String password){
+    public String loginUser(String email, String password){
         // Building Parameters
-        List params = new ArrayList();
-        params.add(new BasicNameValuePair("tag", login_tag));
-        params.add(new BasicNameValuePair("email", email));
-        params.add(new BasicNameValuePair("password", password));
+        
         System.out.println("**************** UserFunction Line 33 *****  loginURL: " + loginURL);
-        JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
-        System.out.println("**************** UserFunction Line 35 *****  gets past getJSONFromURL function call: " + json);
-        return json;
+        String queryResult = jsonParser.getStringFromURL(loginURL, email, password);
+       // JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
+        System.out.println("*********** UserFunction Line 35 ***** getStringFromURL function call: " + queryResult);
+        return queryResult;
     }
     /**
      * Function to change password
