@@ -50,11 +50,17 @@ public class Trivia extends Activity{
 	}
 	//Querys the server for the next question
 	public void getNextQuestion(){
+		int randQuestion = randInt(1,3);
 		
-		String num = "1";
-		String test = "1";
 		
-		new SigninActivity(questionField).execute(num, test);
+		StringBuilder sb = new StringBuilder();
+		sb.append("");
+		sb.append(randQuestion);
+		String num = sb.toString();
+	
+		
+		
+		new SigninActivity(questionField).execute(num);
 	
 		
 	}

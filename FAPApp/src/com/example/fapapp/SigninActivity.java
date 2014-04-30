@@ -28,7 +28,8 @@ public class SigninActivity  extends AsyncTask<String,Void,String>{
 	   protected String doInBackground(String... arg0) {
 	     
 	         try{
-	            String questionNumber = "1";
+	            String questionNumber = (String)arg0[0];
+	            System.out.println("QuestionNumber is: " + questionNumber);
 	           
 	            String link="http://rkclose.com/trivia.php";
 	            String data  = URLEncoder.encode("NUM", "UTF-8") + "=" + URLEncoder.encode(questionNumber, "UTF-8");
@@ -36,10 +37,10 @@ public class SigninActivity  extends AsyncTask<String,Void,String>{
 	            URL url = new URL(link);
 	            URLConnection conn = url.openConnection(); 
 	            conn.setDoOutput(true); 
-	            System.out.println("****************11111111");
+	           
 	            OutputStreamWriter wr = new OutputStreamWriter
 	            (conn.getOutputStream()); 
-	            System.out.println("****************22222222");
+	           
 	            wr.write( data ); 
 	            wr.flush(); 
 	            BufferedReader reader = new BufferedReader
@@ -55,7 +56,7 @@ public class SigninActivity  extends AsyncTask<String,Void,String>{
 	            System.out.println("****************sb.toString is : "+ sb.toString());
 	            return sb.toString();
 	         }catch(Exception e){
-	            return new String("Exception: " + e.getMessage());
+	            return new String("**** Exception: " + e.getMessage());
 	         }
 	      
 	   }
