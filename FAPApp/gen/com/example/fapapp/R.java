@@ -33,14 +33,15 @@ public final class R {
         public static final int map=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f080040;
+        public static final int action_settings=0x7f080042;
         public static final int alert=0x7f080023;
         public static final int alertpass=0x7f080005;
-        public static final int answer1btn=0x7f08003b;
-        public static final int answer2btn=0x7f08003c;
-        public static final int answer3btn=0x7f08003d;
-        public static final int answer4btn=0x7f08003e;
-        public static final int back=0x7f080038;
+        public static final int answer1btn=0x7f08003c;
+        public static final int answer2btn=0x7f08003d;
+        public static final int answer3btn=0x7f08003e;
+        public static final int answer4btn=0x7f08003f;
+        public static final int answerLabel=0x7f080041;
+        public static final int back=0x7f080039;
         public static final int backtoetf=0x7f08000e;
         public static final int bktolog=0x7f080025;
         public static final int bktologin=0x7f08002f;
@@ -68,20 +69,21 @@ public final class R {
         public static final int mapbtn=0x7f080008;
         public static final int mentor=0x7f08002b;
         public static final int newpass=0x7f080002;
-        public static final int nextquestionbtn=0x7f08003f;
-        public static final int nextquestionlabel=0x7f08003a;
+        public static final int nextquestionbtn=0x7f080040;
+        public static final int nextquestionlabel=0x7f08003b;
         public static final int passResetTitle=0x7f08001f;
         public static final int passresetbtn=0x7f08001b;
         public static final int passwordField=0x7f08000f;
         public static final int passwordLabel=0x7f080013;
         public static final int pword=0x7f08002c;
+        public static final int questionTitle=0x7f080038;
         public static final int regat=0x7f080035;
         public static final int register=0x7f08002e;
         public static final int register_error=0x7f080030;
         public static final int registerbtn=0x7f080019;
         public static final int resetpassbtn=0x7f080022;
         public static final int respass=0x7f080024;
-        public static final int tableLayout1=0x7f080039;
+        public static final int tableLayout1=0x7f08003a;
         public static final int tableRow1=0x7f080007;
         public static final int tableRow2=0x7f080009;
         public static final int tableRow3=0x7f08000b;
@@ -133,6 +135,7 @@ public final class R {
         public static final int Mentor=0x7f05001d;
         public static final int NextQuestion=0x7f050020;
         public static final int Password=0x7f050003;
+        public static final int Question=0x7f050027;
         public static final int RegDetails=0x7f050015;
         public static final int Register=0x7f050010;
         public static final int RegisterTitle=0x7f050012;

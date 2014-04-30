@@ -22,6 +22,7 @@ public class Trivia extends Activity{
 	Button backToETF;
 	Button nextQuestion;
 	private TextView questionField;
+	static int answer;
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -58,23 +59,15 @@ public class Trivia extends Activity{
 		sb.append(randQuestion);
 		String num = sb.toString();
 	
-		
-		
-		new SigninActivity(questionField).execute(num);
-	
+		DatabaseFunctions f = (DatabaseFunctions) new DatabaseFunctions(questionField).execute(num);
+		System.out.println("The answer is : " + f.getAnswer());
 		
 	}
 
 	
-	public static int randInt(int min, int max) {
-
-	    // Usually this can be a field rather than a method variable
+	public static int randInt(int min, int max) {   
 	    Random rand = new Random();
-
-	    // nextInt is normally exclusive of the top value,
-	    // so add 1 to make it inclusive
 	    int randomNum = rand.nextInt((max - min) + 1) + min;
-
 	    return randomNum;
 	}
 

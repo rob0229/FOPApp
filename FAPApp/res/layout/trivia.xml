@@ -10,9 +10,18 @@
         android:layout_height="30dp"
         android:layout_gravity="center"
         android:gravity="center"
+        android:text="@string/TriviaTitle"
         android:textAlignment="gravity"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/TriviaTitle" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/questionTitle"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/triviaTitle"
+        android:text="@string/Question"
+        android:textAppearance="?android:attr/textAppearanceLarge" >
+    </TextView>
 
     <Button
         android:id="@+id/back"
@@ -87,5 +96,13 @@
         android:layout_alignLeft="@+id/back"
         android:layout_below="@+id/tableLayout1"
         android:text="@string/NextQuestion" />
+
+    <TextView
+        android:id="@+id/answerLabel"
+        android:layout_width="@dimen/medium_button_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nextquestionbtn"
+        android:text="Answer:" >
+    </TextView>
 
 </RelativeLayout>

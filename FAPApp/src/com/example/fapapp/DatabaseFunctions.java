@@ -10,15 +10,17 @@ import java.net.URLEncoder;
 import android.os.AsyncTask;
 import android.widget.TextView;
 
-public class SigninActivity  extends AsyncTask<String,Void,String>{
+public class DatabaseFunctions  extends AsyncTask<String,Void,String>{
 
 	   private TextView questionField;
+	   String rawString;
+	   String question = "";
+	   String answer = "";
+	   
 
-	   public SigninActivity(TextView v) {
-	     
-	      this.questionField = v;
+	   public DatabaseFunctions(TextView v) {	     
+	      this.questionField = v;    
 	      
-	     
 	   }
 
 	   protected void onPreExecute(){
@@ -53,8 +55,14 @@ public class SigninActivity  extends AsyncTask<String,Void,String>{
 	               sb.append(line);
 	               break;
 	            }
+	            
 	            System.out.println("****************sb.toString is : "+ sb.toString());
-	            return sb.toString();
+	            
+	            rawString = sb.toString();
+	            getQuestion();
+	            
+	            
+	            return question;
 	         }catch(Exception e){
 	            return new String("**** Exception: " + e.getMessage());
 	         }
@@ -62,7 +70,36 @@ public class SigninActivity  extends AsyncTask<String,Void,String>{
 	   }
 	   @Override
 	   protected void onPostExecute(String result){
-	     // this.questionField.setText("Login Successful");
-	      this.questionField.setText(result);
+	      //this.answerField.setText("Login Successful");
+	      this.questionField.setText(question);
 	   }
+	   
+	   
+	   public void getQuestion(){
+		   
+		 //Adds characters for question until the '*' is encountered, which signifies the start of the answer
+           for (int i = 0; i < rawString.length(); i++){
+	           	if (rawString.charAt(i) == '*'){
+	           		//gets the answer and exits for loop
+	           		answer += rawString.charAt(i+1);
+	           		break;
+	           	}
+	           	else 
+	           		question += rawString.charAt(i); 
+		   	}
+		   
+		   
+	   }
+	   
+	   public String getAnswer(){
+		  // int x = Integer.parseInt(answer);
+
+		   //return x;
+		   return answer;
+		   
+	   }
+	   
+	   
+	   
+	   
 	}

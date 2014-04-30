@@ -40,5 +40,6 @@
 	<string name="answer4">D</string>
 	<string name="TriviaTitle">Trivia Game</string>
 	<string name="Trivia">Trivia</string>
+	<string name="Question">Question:</string>
 	
 </resources>
