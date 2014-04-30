@@ -1,34 +1,34 @@
 package com.example.fapapp;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.Random;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.HttpResponse;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Trivia extends Activity{
 	String question = "";
 	Button backToETF;
 	Button nextQuestion;
+	private TextView questionField;
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.trivia);
+		
+		questionField = (TextView)findViewById(R.id.nextquestionlabel);
+		
 		
 		backToETF = (Button) findViewById(R.id.back);
 	      backToETF.setOnClickListener(new View.OnClickListener() {
@@ -42,50 +42,21 @@ public class Trivia extends Activity{
 	      nextQuestion.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View view) {
 					
-					question = getNextQuestion();
+					getNextQuestion();
 					
 				}});
 		
 		
 	}
 	//Querys the server for the next question
-	public String getNextQuestion(){
-		String queryRawResult;
-		String queryResult = "";
-		String bytesSent;
-		//creates query string with a random number to pick a question
+	public void getNextQuestion(){
 		
-		String address = "http://fapapp.bugs3.com/trivia.php";
-		System.out.println("Query string is : "+ address);
-		try{
-		HttpPost httppost;
-        DefaultHttpClient httpclient;
-        ResponseHandler <String> res=new BasicResponseHandler();  
-        List<NameValuePair> nameValuePairs;
-      
-
-        httppost = new HttpPost(address);  
-        HttpParams params = new BasicHttpParams();  
-
-        HttpProtocolParams.setContentCharset(params, "UTF-8");
-        System.out.println("**************GETS HERE ****************");
-        httpclient = new DefaultHttpClient(params);
-        System.out.println("**************2 ****************");
-        nameValuePairs = new ArrayList<NameValuePair>(2);  
-        System.out.println("************** 3****************");
-        nameValuePairs.add(new BasicNameValuePair("num", "1"));
-        System.out.println("************** 4****************");
-        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));  
-        System.out.println("**************5 ****************");
-        bytesSent = httpclient.execute(httppost, res);
-        System.out.println("**************6 ****************");
-        
-		}catch(Exception e){
-			return new String("Exception: " + e.getMessage());
-			
-		}
-		System.out.println("BytesSent : " + bytesSent);
-		return bytesSent;
+		String num = "1";
+		String test = "1";
+		
+		new SigninActivity(questionField).execute(num, test);
+	
+		
 	}
 
 	
