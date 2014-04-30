@@ -1,14 +1,19 @@
 package com.example.fapapp;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -47,52 +52,40 @@ public class Trivia extends Activity{
 	public String getNextQuestion(){
 		String queryRawResult;
 		String queryResult = "";
-		
+		String bytesSent;
 		//creates query string with a random number to pick a question
-		String url = "http://fapapp.bugs3.com/trivia.php?num="+randInt(1,1);
 		
-		
-		System.out.println("Query string is : "+ url);
-		
+		String address = "http://fapapp.bugs3.com/trivia.php";
+		System.out.println("Query string is : "+ address);
 		try{
+		HttpPost httppost;
+        DefaultHttpClient httpclient;
+        ResponseHandler <String> res=new BasicResponseHandler();  
+        List<NameValuePair> nameValuePairs;
+      
+
+        httppost = new HttpPost(address);  
+        HttpParams params = new BasicHttpParams();  
+
+        HttpProtocolParams.setContentCharset(params, "UTF-8");
+        System.out.println("**************GETS HERE ****************");
+        httpclient = new DefaultHttpClient(params);
+        System.out.println("**************2 ****************");
+        nameValuePairs = new ArrayList<NameValuePair>(2);  
+        System.out.println("************** 3****************");
+        nameValuePairs.add(new BasicNameValuePair("num", "1"));
+        System.out.println("************** 4****************");
+        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));  
+        System.out.println("**************5 ****************");
+        bytesSent = httpclient.execute(httppost, res);
+        System.out.println("**************6 ****************");
+        
+		}catch(Exception e){
+			return new String("Exception: " + e.getMessage());
 			
-            HttpClient client = new DefaultHttpClient();
-            HttpGet request = new HttpGet();         
-            request.setURI(new URI(url));
-            //Gets Stuck RIGHT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            HttpResponse response = client.execute(request);
-            System.out.println("**********HERE   ******");
-            BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-            
-           StringBuffer sb = new StringBuffer("");
-           String line="";
-           while ((line = in.readLine()) != null) {
-              sb.append(line);
-              break;
-            }
-            in.close();
-            System.out.println("Get Method returned: " +sb.toString());
-            queryRawResult = sb.toString();
-            
-            //Serversfree returns an object with an advertisement string appended to the result, 
-            //this loop looks for the appending first '<' which starts the added content and stops
-            //adding characters to the resultQuery string.
-            for (int i = 0; i < queryRawResult.length(); i++){
-            	if (queryRawResult.charAt(i) == '<')
-            		break;
-            	else 
-            		queryResult += queryRawResult.charAt(i);
-            	
-            }
-            
-            System.out.println("Parsed queryResult is now: " +queryResult);
-  
-            return queryResult;
-            
-      }catch(Exception e){
-         return new String("Exception: " + e.getMessage());
-      }
-	
+		}
+		System.out.println("BytesSent : " + bytesSent);
+		return bytesSent;
 	}
 
 	
