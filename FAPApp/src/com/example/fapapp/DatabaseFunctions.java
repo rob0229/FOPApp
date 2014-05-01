@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 
 	private TextView questionField;
-	private TextView answerField;
+	
 	String rawString;
 	String rawAnswer;
 	String question = "";
@@ -24,10 +24,10 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	Button answerBtnD;
 	String btnA = "", btnB = "", btnC = "", btnD = "";
 
-	public DatabaseFunctions(TextView quest, TextView ansF, Button a, Button b,
+	public DatabaseFunctions(TextView quest, Button a, Button b,
 			Button c, Button d) {
 		this.questionField = quest;
-		this.answerField = ansF;
+	
 		this.answerBtnA = a;
 		this.answerBtnB = b;
 		this.answerBtnC = c;
@@ -83,7 +83,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-		this.answerField.setText(Trivia.answer);
+		
 		this.questionField.setText(question);
 		this.answerBtnA.setText(btnA);
 		this.answerBtnB.setText(btnB);

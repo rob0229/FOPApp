@@ -40,12 +40,13 @@
 
             <Button
                 android:id="@+id/answer1btn"
-                android:layout_width="@dimen/small_button_width"
+                android:layout_width="@dimen/medium_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/answer1" />
 
             <Button
                 android:id="@+id/answer2btn"
+                android:layout_width="@dimen/medium_button_width"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:text="@string/answer2" />
@@ -58,13 +59,13 @@
 
             <Button
                 android:id="@+id/answer3btn"
-                android:layout_width="@dimen/small_button_width"
+                android:layout_width="@dimen/medium_button_width"
                 android:layout_height="wrap_content"
                 android:text="@string/answer3" />
 
             <Button
                 android:id="@+id/answer4btn"
-                android:layout_width="@dimen/small_button_width"
+                android:layout_width="@dimen/medium_button_width"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:text="@string/answer4" />

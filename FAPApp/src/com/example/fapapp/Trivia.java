@@ -12,6 +12,7 @@ import org.apache.http.HttpResponse;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,8 +26,9 @@ public class Trivia extends Activity {
 	Button answerBtnB;
 	Button answerBtnC;
 	Button answerBtnD;
+	boolean correct = false;
 
-	private TextView questionField, answerField;
+	private TextView questionField;
 	public static String answer;
 
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,14 +36,18 @@ public class Trivia extends Activity {
 		setContentView(R.layout.trivia);
 
 		questionField = (TextView) findViewById(R.id.nextquestionlabel);
-		answerField = (TextView) findViewById(R.id.answerField);
 		answerBtnA = (Button) findViewById(R.id.answer1btn);
 		answerBtnB = (Button) findViewById(R.id.answer2btn);
 		answerBtnC = (Button) findViewById(R.id.answer3btn);
 		answerBtnD = (Button) findViewById(R.id.answer4btn);
 		nextQuestion = (Button) findViewById(R.id.nextquestionbtn);
 		backToETF = (Button) findViewById(R.id.back);
-
+		
+		answerBtnA.setEnabled(false);
+		answerBtnB.setEnabled(false);
+		answerBtnC.setEnabled(false);
+		answerBtnD.setEnabled(false);
+		
 		backToETF.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent myIntent = new Intent(view.getContext(),
@@ -54,6 +60,17 @@ public class Trivia extends Activity {
 		nextQuestion.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				answer = "";
+				correct = false;
+				
+				answerBtnA.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnB.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnC.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnD.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnA.setEnabled(true);
+				answerBtnB.setEnabled(true);
+				answerBtnC.setEnabled(true);
+				answerBtnD.setEnabled(true);
+				
 				getNextQuestion();
 			}
 		});
@@ -61,24 +78,54 @@ public class Trivia extends Activity {
 		answerBtnA.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				
+				if(answer.equals("1")){
+					correct = true;				
+				}
+				answerBtnA.setEnabled(false);
+				answerBtnB.setEnabled(false);
+				answerBtnC.setEnabled(false);
+				answerBtnD.setEnabled(false);
+				displayAnswer(answerBtnA);
+				
 			}
 		});
 		
 		answerBtnB.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				
+				if(answer.equals("2")){
+					correct = true;				
+				}
+				answerBtnA.setEnabled(false);
+				answerBtnB.setEnabled(false);
+				answerBtnC.setEnabled(false);
+				answerBtnD.setEnabled(false);
+				displayAnswer(answerBtnB);
 			}
 		});
 		
 		answerBtnC.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				
+				if(answer.equals("3")){
+					correct = true;			
+				}
+				answerBtnA.setEnabled(false);
+				answerBtnB.setEnabled(false);
+				answerBtnC.setEnabled(false);
+				answerBtnD.setEnabled(false);
+				displayAnswer(answerBtnC);
 			}
 		});
 
 		answerBtnD.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				
+				if(answer.equals("4")){
+					correct = true;
+				}
+				answerBtnA.setEnabled(false);
+				answerBtnB.setEnabled(false);
+				answerBtnC.setEnabled(false);
+				answerBtnD.setEnabled(false);
+				displayAnswer(answerBtnD);
 			}
 		});
 	}
@@ -91,7 +138,7 @@ public class Trivia extends Activity {
 		sb.append("");
 		sb.append(randQuestion);
 		String num = sb.toString();
-		new DatabaseFunctions(questionField, answerField, answerBtnA, answerBtnB, answerBtnC, answerBtnD).execute(num);
+		new DatabaseFunctions(questionField, answerBtnA, answerBtnB, answerBtnC, answerBtnD).execute(num);
 		System.out.println("Answer is = " + answer);
 
 	}
@@ -101,6 +148,15 @@ public class Trivia extends Activity {
 		Random rand = new Random();
 		int randomNum = rand.nextInt((max - min) + 1) + min;
 		return randomNum;
+	}
+	
+	public void displayAnswer(Button btn){
+		if(correct){
+			btn.setBackgroundColor(Color.GREEN);
+		}
+		else
+			btn.setBackgroundColor(Color.RED);
+		
 	}
 
 }
