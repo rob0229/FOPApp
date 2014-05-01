@@ -96,6 +96,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 		char answerChar;
 		// Adds characters for question until the '*' is encountered, which
 		// signifies the start of the answer
+		
 		for (int i = 0; i < rawString.length(); i++) {
 			while (rawString.charAt(i) != '#') {
 				question += rawString.charAt(i);
