@@ -32,7 +32,7 @@
 	<string name="mapBtnTitle">Map of Henson</string>
 	<string name="Mentor">Mentor/Mentee</string>
 	<string name="backToETFTitle">back</string>
-	<string name="question">click "next" for question</string>
+	<string name="question">Click "Next Question" Button</string>
 	<string name="NextQuestion">Next Question</string>
 	<string name="answer1">A</string>
 	<string name="answer2">B</string>
@@ -41,5 +41,6 @@
 	<string name="TriviaTitle">Trivia Game</string>
 	<string name="Trivia">Trivia</string>
 	<string name="Question">Question:</string>
+	<string name="Answer">Answer:</string>
 	
 </resources>

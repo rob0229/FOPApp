@@ -8,20 +8,13 @@
         android:id="@+id/triviaTitle"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:textColor="#009900"
+    	android:typeface="monospace"
         android:layout_gravity="center"
         android:gravity="center"
         android:text="@string/TriviaTitle"
         android:textAlignment="gravity"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/questionTitle"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/triviaTitle"
-        android:text="@string/Question"
-        android:textAppearance="?android:attr/textAppearanceLarge" >
-    </TextView>
 
     <Button
         android:id="@+id/back"
@@ -98,11 +91,21 @@
         android:text="@string/NextQuestion" />
 
     <TextView
-        android:id="@+id/answerLabel"
-        android:layout_width="@dimen/medium_button_width"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nextquestionbtn"
-        android:text="Answer:" >
-    </TextView>
+        android:id="@+id/questionTitle"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:typeface="monospace"
+        android:layout_alignTop="@+id/nextquestionlabel"
+        android:layout_centerHorizontal="true"
+        android:text="@string/Question"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/answerField"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:typeface="monospace"
+        android:layout_alignBottom="@+id/nextquestionlabel"       
+        android:text="@string/Answer"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
