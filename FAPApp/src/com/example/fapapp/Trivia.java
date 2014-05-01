@@ -70,6 +70,7 @@ public class Trivia extends Activity {
 				answerBtnB.setEnabled(true);
 				answerBtnC.setEnabled(true);
 				answerBtnD.setEnabled(true);
+				nextQuestion.setEnabled(false);
 				
 				getNextQuestion();
 			}
@@ -85,6 +86,7 @@ public class Trivia extends Activity {
 				answerBtnB.setEnabled(false);
 				answerBtnC.setEnabled(false);
 				answerBtnD.setEnabled(false);
+				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnA);
 				
 			}
@@ -99,6 +101,7 @@ public class Trivia extends Activity {
 				answerBtnB.setEnabled(false);
 				answerBtnC.setEnabled(false);
 				answerBtnD.setEnabled(false);
+				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnB);
 			}
 		});
@@ -112,6 +115,7 @@ public class Trivia extends Activity {
 				answerBtnB.setEnabled(false);
 				answerBtnC.setEnabled(false);
 				answerBtnD.setEnabled(false);
+				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnC);
 			}
 		});
@@ -125,14 +129,17 @@ public class Trivia extends Activity {
 				answerBtnB.setEnabled(false);
 				answerBtnC.setEnabled(false);
 				answerBtnD.setEnabled(false);
+				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnD);
 			}
 		});
 	}
 
 	// Query the server for the next question
+	//We should change this random number to the PHP so it can automatically adjust as we
+	//add new questions without having to reinstall the app.
 	public void getNextQuestion() {
-		int randQuestion = randInt(1, 3);
+		int randQuestion = randInt(1, 6);
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("");

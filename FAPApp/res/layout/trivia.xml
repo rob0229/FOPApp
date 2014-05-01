@@ -100,13 +100,6 @@
         android:layout_centerHorizontal="true"
         android:text="@string/Question"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    <TextView
-        android:id="@+id/answerField"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:typeface="monospace"
-        android:layout_alignBottom="@+id/nextquestionlabel"       
-        android:text="@string/Answer"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
 
 </RelativeLayout>

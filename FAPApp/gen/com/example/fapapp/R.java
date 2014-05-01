@@ -33,14 +33,13 @@ public final class R {
         public static final int map=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f080042;
+        public static final int action_settings=0x7f080041;
         public static final int alert=0x7f080023;
         public static final int alertpass=0x7f080005;
         public static final int answer1btn=0x7f08003b;
         public static final int answer2btn=0x7f08003c;
         public static final int answer3btn=0x7f08003d;
         public static final int answer4btn=0x7f08003e;
-        public static final int answerField=0x7f080041;
         public static final int back=0x7f080038;
         public static final int backtoetf=0x7f08000e;
         public static final int bktolog=0x7f080025;
