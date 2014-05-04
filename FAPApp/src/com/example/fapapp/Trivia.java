@@ -6,10 +6,12 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Random;
 
 import org.apache.http.HttpResponse;
 
+import android.R.integer;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,6 +21,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Trivia extends Activity {
+	static ArrayList questionHistory;
 	String question = "";
 	Button backToETF;
 	Button nextQuestion;
@@ -34,7 +37,7 @@ public class Trivia extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.trivia);
-
+		questionHistory = new ArrayList();
 		questionField = (TextView) findViewById(R.id.nextquestionlabel);
 		answerBtnA = (Button) findViewById(R.id.answer1btn);
 		answerBtnB = (Button) findViewById(R.id.answer2btn);
@@ -139,13 +142,15 @@ public class Trivia extends Activity {
 	//We should change this random number to the PHP so it can automatically adjust as we
 	//add new questions without having to reinstall the app.
 	public void getNextQuestion() {
+		/*
 		int randQuestion = randInt(1, 6);
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("");
 		sb.append(randQuestion);
 		String num = sb.toString();
-		new DatabaseFunctions(questionField, answerBtnA, answerBtnB, answerBtnC, answerBtnD).execute(num);
+		*/
+		new DatabaseFunctions(questionField, answerBtnA, answerBtnB, answerBtnC, answerBtnD).execute();
 		System.out.println("Answer is = " + answer);
 
 	}

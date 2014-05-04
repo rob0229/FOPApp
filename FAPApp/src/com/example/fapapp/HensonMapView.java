@@ -27,8 +27,7 @@ public class HensonMapView extends Activity {
 		backToETF = (Button) findViewById(R.id.backtoetf);
 		backToETF.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				Intent myIntent = new Intent(view.getContext(),
-						EnterTheFap.class);
+				Intent myIntent = new Intent(view.getContext(),	EnterTheFap.class);
 				startActivityForResult(myIntent, 0);
 				finish();
 			}
@@ -39,8 +38,7 @@ public class HensonMapView extends Activity {
     public Object instantiateItem(ViewGroup container, int position) {
     	TouchImageView touch = new TouchImageView(this);
   
-        inflater = (LayoutInflater) _activity
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) _activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View viewLayout = inflater.inflate(R.layout.hensonmap, container,
                 false);
          

@@ -6,6 +6,8 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Random;
 
 import android.os.AsyncTask;
 import android.widget.Button;
@@ -14,7 +16,10 @@ import android.widget.TextView;
 public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 
 	private TextView questionField;
-	
+
+	//static ArrayList<Integer> questionHistory;
+	int questionNumber;
+	String randQuest;
 	String rawString;
 	String rawAnswer;
 	String question = "";
@@ -24,14 +29,20 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	Button answerBtnD;
 	String btnA = "", btnB = "", btnC = "", btnD = "";
 
-	public DatabaseFunctions(TextView quest, Button a, Button b,
-			Button c, Button d) {
+	public DatabaseFunctions(TextView quest, Button a, Button b, Button c,
+			Button d) {
+		
 		this.questionField = quest;
-	
+
 		this.answerBtnA = a;
 		this.answerBtnB = b;
 		this.answerBtnC = c;
 		this.answerBtnD = d;
+	}
+
+	public DatabaseFunctions(int num) {
+		// randQuestion = num;
+
 	}
 
 	protected void onPreExecute() {
@@ -42,12 +53,8 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	protected String doInBackground(String... arg0) {
 
 		try {
-			String questionNumber = (String) arg0[0];
-			System.out.println("QuestionNumber is: " + questionNumber);
 
-			String link = "http://rkclose.com/trivia.php";
-			String data = URLEncoder.encode("NUM", "UTF-8") + "="
-					+ URLEncoder.encode(questionNumber, "UTF-8");
+			String link = "http://rkclose.com/getDBSize.php";
 
 			URL url = new URL(link);
 			URLConnection conn = url.openConnection();
@@ -56,8 +63,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 			OutputStreamWriter wr = new OutputStreamWriter(
 					conn.getOutputStream());
 
-			wr.write(data);
-			wr.flush();
+			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					conn.getInputStream()));
 			StringBuilder sb = new StringBuilder();
@@ -68,12 +74,45 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 				break;
 			}
 
-			System.out.println("****************sb.toString is : "
+			System.out.println("****************DB SIZE sb.toString is : "
 					+ sb.toString());
 
+			rawAnswer = sb.toString();
+
+			randQuest = getRandQuestion(rawAnswer);
+System.out.println("******RandomQuest # Is "+randQuest);
+			// Playground
+
+			link = "http://rkclose.com/trivia.php";
+
+			String data = URLEncoder.encode("NUM", "UTF-8") + "="
+					+ URLEncoder.encode(randQuest, "UTF-8");
+
+			url = new URL(link);
+			conn = url.openConnection();
+			conn.setDoOutput(true);
+
+			wr = new OutputStreamWriter(conn.getOutputStream());
+
+			wr.write(data);
+			wr.flush();
+			reader = new BufferedReader(new InputStreamReader(
+					conn.getInputStream()));
+			sb = new StringBuilder();
+			line = null;
+			// Read Server Response
+			while ((line = reader.readLine()) != null) {
+				sb.append(line);
+				break;
+			}
+
+			System.out.println("****************echo is : " + sb.toString());
+
 			rawString = sb.toString();
+
+			// EndPlayground
 			parseResponse();
-			;
+			
 			return question;
 		} catch (Exception e) {
 			return new String("**** Exception: " + e.getMessage());
@@ -83,7 +122,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-		
+
 		this.questionField.setText(question);
 		this.answerBtnA.setText(btnA);
 		this.answerBtnB.setText(btnB);
@@ -91,12 +130,58 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 		this.answerBtnD.setText(btnD);
 	}
 
+	public String getRandQuestion(String size) {
+		int sizeOfDB = Integer.parseInt(size);
+		String str = "";
+		int questNum = randInt(1, sizeOfDB);
+
+		// checks to see if the random number generated has been generated
+		// before
+		// If not, it will add it to the Trivia.arrayList and return the number
+		// If all the questions have been asked, it will clear the arraylist
+		// and start over
+		// repeating the questions
+		do {
+
+			// Erase question history to start over
+			if (Trivia.questionHistory.size() == sizeOfDB) {
+				Trivia.questionHistory.clear();
+				System.out.println("****111");
+			}
+			//If the number has not been added yet, add it and return the string	
+			else if (!Trivia.questionHistory.contains(questNum)) {
+				System.out.println("****222");
+				StringBuilder sb = new StringBuilder();
+				sb.append("");
+				sb.append(questNum);
+				str = sb.toString();
+				Trivia.questionHistory.add(questNum);
+				return str;
+
+			}
+
+			// Gets a new random int
+			else{
+				System.out.println("****333");				
+			
+				questNum = randInt(1, sizeOfDB);
+			}
+		}while (true);
+		
+	}
+
+	public static int randInt(int min, int max) {
+		Random rand = new Random();
+		int randomNum = rand.nextInt((max - min) + 1) + min;
+		return randomNum;
+	}
+
 	// Parses the rawString returned by query.
 	public void parseResponse() {
 		char answerChar;
 		// Adds characters for question until the '*' is encountered, which
 		// signifies the start of the answer
-		
+
 		for (int i = 0; i < rawString.length(); i++) {
 			while (rawString.charAt(i) != '#') {
 				question += rawString.charAt(i);
@@ -122,7 +207,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 				btnD += rawString.charAt(i);
 				i++;
 			}
-			
+
 			if (rawString.charAt(i) == '*') {
 				// gets the answer and exits for loop
 				answerChar = rawString.charAt(i + 1);
@@ -131,7 +216,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 						+ rawString.charAt(i + 1) + " answer = : "
 						+ Trivia.answer);
 				break;
-			} 
+			}
 		}
 	}
 
