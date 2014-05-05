@@ -1,17 +1,8 @@
 package com.example.fapapp;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.apache.http.HttpResponse;
-
-import android.R.integer;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Trivia extends Activity {
+	@SuppressWarnings("rawtypes")
 	static ArrayList questionHistory;
 	String question = "";
 	Button backToETF;
@@ -33,10 +25,11 @@ public class Trivia extends Activity {
 
 	private TextView questionField;
 	public static String answer;
-
+	//instantiates all the variables and UI interface components on the Trivia page
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.trivia);
+
 		questionHistory = new ArrayList();
 		questionField = (TextView) findViewById(R.id.nextquestionlabel);
 		answerBtnA = (Button) findViewById(R.id.answer1btn);
@@ -45,12 +38,11 @@ public class Trivia extends Activity {
 		answerBtnD = (Button) findViewById(R.id.answer4btn);
 		nextQuestion = (Button) findViewById(R.id.nextquestionbtn);
 		backToETF = (Button) findViewById(R.id.back);
-		
 		answerBtnA.setEnabled(false);
 		answerBtnB.setEnabled(false);
 		answerBtnC.setEnabled(false);
 		answerBtnD.setEnabled(false);
-		
+
 		backToETF.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent myIntent = new Intent(view.getContext(),
@@ -64,60 +56,71 @@ public class Trivia extends Activity {
 			public void onClick(View view) {
 				answer = "";
 				correct = false;
-				
-				answerBtnA.setBackgroundResource(android.R.drawable.btn_default);
-				answerBtnB.setBackgroundResource(android.R.drawable.btn_default);
-				answerBtnC.setBackgroundResource(android.R.drawable.btn_default);
-				answerBtnD.setBackgroundResource(android.R.drawable.btn_default);
+				// Resets the button color
+				answerBtnA
+						.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnB
+						.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnC
+						.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnD
+						.setBackgroundResource(android.R.drawable.btn_default);
+				// enables the answer buttons
 				answerBtnA.setEnabled(true);
 				answerBtnB.setEnabled(true);
 				answerBtnC.setEnabled(true);
 				answerBtnD.setEnabled(true);
+				// disables the next question button
 				nextQuestion.setEnabled(false);
-				
 				getNextQuestion();
 			}
 		});
-		
+
 		answerBtnA.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				
-				if(answer.equals("1")){
-					correct = true;				
+
+				if (answer.equals("1")) {
+					correct = true;
 				}
+				// disables the answer buttons
 				answerBtnA.setEnabled(false);
 				answerBtnB.setEnabled(false);
 				answerBtnC.setEnabled(false);
 				answerBtnD.setEnabled(false);
+				// enables the next question button
 				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnA);
-				
+
 			}
 		});
-		
+
 		answerBtnB.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				if(answer.equals("2")){
-					correct = true;				
+				if (answer.equals("2")) {
+					correct = true;
 				}
+				// disables the answer buttons
 				answerBtnA.setEnabled(false);
 				answerBtnB.setEnabled(false);
 				answerBtnC.setEnabled(false);
 				answerBtnD.setEnabled(false);
+				// enables the next question button
 				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnB);
 			}
 		});
-		
+
 		answerBtnC.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				if(answer.equals("3")){
-					correct = true;			
+				if (answer.equals("3")) {
+					correct = true;
 				}
+				// disables the answer buttons
 				answerBtnA.setEnabled(false);
 				answerBtnB.setEnabled(false);
 				answerBtnC.setEnabled(false);
 				answerBtnD.setEnabled(false);
+				// enables the answer button
 				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnC);
 			}
@@ -125,13 +128,15 @@ public class Trivia extends Activity {
 
 		answerBtnD.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				if(answer.equals("4")){
+				if (answer.equals("4")) {
 					correct = true;
 				}
+				// disables the answer buttons
 				answerBtnA.setEnabled(false);
 				answerBtnB.setEnabled(false);
 				answerBtnC.setEnabled(false);
 				answerBtnD.setEnabled(false);
+				// enables the answer button
 				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnD);
 			}
@@ -139,36 +144,29 @@ public class Trivia extends Activity {
 	}
 
 	// Query the server for the next question
-	//We should change this random number to the PHP so it can automatically adjust as we
-	//add new questions without having to reinstall the app.
+	// We should change this random number to the PHP so it can automatically
+	// adjust as we
+	// add new questions without having to reinstall the app.
 	public void getNextQuestion() {
-		/*
-		int randQuestion = randInt(1, 6);
 
-		StringBuilder sb = new StringBuilder();
-		sb.append("");
-		sb.append(randQuestion);
-		String num = sb.toString();
-		*/
-		new DatabaseFunctions(questionField, answerBtnA, answerBtnB, answerBtnC, answerBtnD).execute();
+		new DatabaseFunctions(questionField, answerBtnA, answerBtnB,
+				answerBtnC, answerBtnD).execute();
 		System.out.println("Answer is = " + answer);
 
 	}
-	
-	//returns a random integer within min/max inclusive
+
+	// returns a random integer within min/max inclusive
 	public static int randInt(int min, int max) {
 		Random rand = new Random();
 		int randomNum = rand.nextInt((max - min) + 1) + min;
 		return randomNum;
 	}
-	
-	public void displayAnswer(Button btn){
-		if(correct){
-			btn.setBackgroundColor(Color.GREEN);
-		}
-		else
-			btn.setBackgroundColor(Color.RED);
-		
-	}
 
+	// changes the color of the button to green if correct and red if incorrect
+	public void displayAnswer(Button btn) {
+		if (correct) {
+			btn.setBackgroundColor(Color.GREEN);
+		} else
+			btn.setBackgroundColor(Color.RED);
+	}
 }

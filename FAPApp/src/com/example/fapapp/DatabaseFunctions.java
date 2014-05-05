@@ -12,7 +12,8 @@ import java.util.Random;
 import android.os.AsyncTask;
 import android.widget.Button;
 import android.widget.TextView;
-
+//This class retrieves information from a database and displays the information to the user
+//in the App.
 public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 
 	private TextView questionField;
@@ -109,7 +110,6 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 		} catch (Exception e) {
 			return new String("**** Exception: " + e.getMessage());
 		}
-
 	}
 
 	@Override
@@ -134,7 +134,6 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 		// and start over
 		// repeating the questions
 		do {
-
 			// Erase question history to start over
 			if (Trivia.questionHistory.size() == sizeOfDB) {
 				Trivia.questionHistory.clear();
@@ -150,17 +149,15 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 				str = sb.toString();
 				Trivia.questionHistory.add(questNum);
 				return str;
-
 			}
 
-			// Gets a new random int
+			// Gets a new random int between 1 and the size of the database
 			else {
 				System.out.println("****333");
 
 				questNum = randInt(1, sizeOfDB);
 			}
 		} while (true);
-
 	}
 
 	public static int randInt(int min, int max) {
@@ -212,5 +209,4 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 			}
 		}
 	}
-
 }

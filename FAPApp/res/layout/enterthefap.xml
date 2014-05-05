@@ -45,12 +45,6 @@
             android:id="@+id/tableRow3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
-
-            <Button
-                android:id="@+id/logoutbtn"
-                android:layout_width="@dimen/large_button_width"
-                android:layout_height="@dimen/large_button_height"
-                android:text="@string/LogoutBtnTitle" />
         </TableRow>
     </TableLayout>
 
