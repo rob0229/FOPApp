@@ -17,7 +17,6 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 
 	private TextView questionField;
 
-	//static ArrayList<Integer> questionHistory;
 	int questionNumber;
 	String randQuest;
 	String rawString;
@@ -31,22 +30,16 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 
 	public DatabaseFunctions(TextView quest, Button a, Button b, Button c,
 			Button d) {
-		
-		this.questionField = quest;
 
+		this.questionField = quest;
 		this.answerBtnA = a;
 		this.answerBtnB = b;
 		this.answerBtnC = c;
 		this.answerBtnD = d;
 	}
 
-	public DatabaseFunctions(int num) {
-		// randQuestion = num;
-
-	}
-
 	protected void onPreExecute() {
-
+		//display a loading message icon here
 	}
 
 	@Override
@@ -63,7 +56,6 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 			OutputStreamWriter wr = new OutputStreamWriter(
 					conn.getOutputStream());
 
-			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					conn.getInputStream()));
 			StringBuilder sb = new StringBuilder();
@@ -80,7 +72,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 			rawAnswer = sb.toString();
 
 			randQuest = getRandQuestion(rawAnswer);
-System.out.println("******RandomQuest # Is "+randQuest);
+			System.out.println("******RandomQuest # Is " + randQuest);
 			// Playground
 
 			link = "http://rkclose.com/trivia.php";
@@ -112,7 +104,7 @@ System.out.println("******RandomQuest # Is "+randQuest);
 
 			// EndPlayground
 			parseResponse();
-			
+
 			return question;
 		} catch (Exception e) {
 			return new String("**** Exception: " + e.getMessage());
@@ -148,7 +140,8 @@ System.out.println("******RandomQuest # Is "+randQuest);
 				Trivia.questionHistory.clear();
 				System.out.println("****111");
 			}
-			//If the number has not been added yet, add it and return the string	
+			// If the number has not been added yet, add it and return the
+			// string
 			else if (!Trivia.questionHistory.contains(questNum)) {
 				System.out.println("****222");
 				StringBuilder sb = new StringBuilder();
@@ -161,13 +154,13 @@ System.out.println("******RandomQuest # Is "+randQuest);
 			}
 
 			// Gets a new random int
-			else{
-				System.out.println("****333");				
-			
+			else {
+				System.out.println("****333");
+
 				questNum = randInt(1, sizeOfDB);
 			}
-		}while (true);
-		
+		} while (true);
+
 	}
 
 	public static int randInt(int min, int max) {
