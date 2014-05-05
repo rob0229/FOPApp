@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,14 +23,16 @@ public class Trivia extends Activity {
 	Button answerBtnC;
 	Button answerBtnD;
 	boolean correct = false;
+	private Context context;
 
 	private TextView questionField;
 	public static String answer;
 	//instantiates all the variables and UI interface components on the Trivia page
+	@SuppressWarnings("rawtypes")
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.trivia);
-
+		context = this;
 		questionHistory = new ArrayList();
 		questionField = (TextView) findViewById(R.id.nextquestionlabel);
 		answerBtnA = (Button) findViewById(R.id.answer1btn);
@@ -72,6 +75,7 @@ public class Trivia extends Activity {
 				answerBtnD.setEnabled(true);
 				// disables the next question button
 				nextQuestion.setEnabled(false);
+				
 				getNextQuestion();
 			}
 		});
@@ -149,7 +153,7 @@ public class Trivia extends Activity {
 	// add new questions without having to reinstall the app.
 	public void getNextQuestion() {
 
-		new DatabaseFunctions(questionField, answerBtnA, answerBtnB,
+		new DatabaseFunctions(context, questionField, answerBtnA, answerBtnB,
 				answerBtnC, answerBtnD).execute();
 		System.out.println("Answer is = " + answer);
 

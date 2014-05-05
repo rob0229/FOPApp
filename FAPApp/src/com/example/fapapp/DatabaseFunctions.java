@@ -9,6 +9,9 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Random;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,8 +19,9 @@ import android.widget.TextView;
 //in the App.
 public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 
+	private Context context;
 	private TextView questionField;
-
+	private ProgressDialog pd = null;
 	int questionNumber;
 	String randQuest;
 	String rawString;
@@ -29,9 +33,9 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	Button answerBtnD;
 	String btnA = "", btnB = "", btnC = "", btnD = "";
 
-	public DatabaseFunctions(TextView quest, Button a, Button b, Button c,
+	public DatabaseFunctions(Context con, TextView quest, Button a, Button b, Button c,
 			Button d) {
-
+		this.context = con;
 		this.questionField = quest;
 		this.answerBtnA = a;
 		this.answerBtnB = b;
@@ -41,6 +45,13 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 
 	protected void onPreExecute() {
 		//display a loading message icon here
+		pd = new ProgressDialog(context, R.style.GettingDataDialog);
+		pd.setTitle("Getting next Question...");
+		pd.setMessage("Please wait.");
+		pd.setCancelable(false);
+		pd.setIndeterminate(true);
+		pd.setMax(5);
+		pd.show();
 	}
 
 	@Override
@@ -114,7 +125,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-
+		pd.dismiss();
 		this.questionField.setText(question);
 		this.answerBtnA.setText(btnA);
 		this.answerBtnB.setText(btnB);

@@ -43,7 +43,6 @@ public class TouchImageView extends ImageView {
 	
 	private static final String DEBUG = "DEBUG";
 	
-	//
 	// SuperMin and SuperMax multipliers. Determine how much the image can be
 	// zoomed below or above the zoom boundaries, before animating back to the
 	// min/max zoom boundary.
