@@ -2,19 +2,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-
+    android:orientation="vertical"
+    >
     <TextView
         android:id="@+id/triviaTitle"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:text="@string/TriviaTitle"
         android:textAlignment="gravity"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp"
         android:textColor="#009900"
-        android:typeface="monospace" />
+        android:typeface="monospace" 
+        />
 
     <Button
         android:id="@+id/back"
@@ -31,7 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/nextquestionlabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp" >
+        android:layout_marginBottom="16dp" 
+        >
 
         <TableRow
             android:id="@+id/tableRow1"
@@ -83,7 +85,8 @@
         android:gravity="center"
         android:text="@string/question"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:background="#FFFFFFFF" />
 
     <Button
         android:id="@+id/nextquestionbtn"
@@ -102,5 +105,23 @@
         android:text="@string/Question"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:typeface="monospace" />
+
+    <TextView
+        android:id="@+id/rightLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nextquestionbtn"
+        android:layout_marginTop="21dp"
+        android:layout_toLeftOf="@+id/nextquestionbtn"
+        android:text="@string/rightLabel" />
+
+    <TextView
+        android:id="@+id/wrongLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/rightLabel"
+        android:layout_below="@+id/rightLabel"
+        android:layout_marginTop="27dp"
+        android:text="@string/wrongLabel" />
 
 </RelativeLayout>

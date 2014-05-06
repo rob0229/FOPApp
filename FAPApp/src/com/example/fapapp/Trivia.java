@@ -22,12 +22,16 @@ public class Trivia extends Activity {
 	Button answerBtnB;
 	Button answerBtnC;
 	Button answerBtnD;
+	TextView rightLabel, wrongLabel;
 	boolean correct = false;
 	private Context context;
+	int right=0, wrong=0;
 
 	private TextView questionField;
 	public static String answer;
-	//instantiates all the variables and UI interface components on the Trivia page
+
+	// instantiates all the variables and UI interface components on the Trivia
+	// page
 	@SuppressWarnings("rawtypes")
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,6 +44,8 @@ public class Trivia extends Activity {
 		answerBtnC = (Button) findViewById(R.id.answer3btn);
 		answerBtnD = (Button) findViewById(R.id.answer4btn);
 		nextQuestion = (Button) findViewById(R.id.nextquestionbtn);
+		rightLabel = (TextView) findViewById(R.id.rightLabel);
+		wrongLabel = (TextView) findViewById(R.id.wrongLabel);
 		backToETF = (Button) findViewById(R.id.back);
 		answerBtnA.setEnabled(false);
 		answerBtnB.setEnabled(false);
@@ -75,7 +81,7 @@ public class Trivia extends Activity {
 				answerBtnD.setEnabled(true);
 				// disables the next question button
 				nextQuestion.setEnabled(false);
-				
+
 				getNextQuestion();
 			}
 		});
@@ -85,7 +91,9 @@ public class Trivia extends Activity {
 
 				if (answer.equals("1")) {
 					correct = true;
-				}
+					right++;
+				}else
+					wrong++;
 				// disables the answer buttons
 				answerBtnA.setEnabled(false);
 				answerBtnB.setEnabled(false);
@@ -94,7 +102,8 @@ public class Trivia extends Activity {
 				// enables the next question button
 				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnA);
-
+				rightLabel.setText("Correct Answers: "+right);
+				wrongLabel.setText("Incorrect Answers: "+wrong);
 			}
 		});
 
@@ -102,7 +111,9 @@ public class Trivia extends Activity {
 			public void onClick(View view) {
 				if (answer.equals("2")) {
 					correct = true;
-				}
+					right++;
+				}else
+					wrong++;
 				// disables the answer buttons
 				answerBtnA.setEnabled(false);
 				answerBtnB.setEnabled(false);
@@ -111,6 +122,8 @@ public class Trivia extends Activity {
 				// enables the next question button
 				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnB);
+				rightLabel.setText("Correct Answers: "+right);
+				wrongLabel.setText("Incorrect Answers: "+wrong);
 			}
 		});
 
@@ -118,7 +131,9 @@ public class Trivia extends Activity {
 			public void onClick(View view) {
 				if (answer.equals("3")) {
 					correct = true;
-				}
+					right++;
+				}else
+					wrong++;
 				// disables the answer buttons
 				answerBtnA.setEnabled(false);
 				answerBtnB.setEnabled(false);
@@ -127,6 +142,8 @@ public class Trivia extends Activity {
 				// enables the answer button
 				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnC);
+				rightLabel.setText("Correct Answers: "+right);
+				wrongLabel.setText("Incorrect Answers: "+wrong);
 			}
 		});
 
@@ -134,7 +151,9 @@ public class Trivia extends Activity {
 			public void onClick(View view) {
 				if (answer.equals("4")) {
 					correct = true;
-				}
+					right++;
+				}else
+					wrong++;
 				// disables the answer buttons
 				answerBtnA.setEnabled(false);
 				answerBtnB.setEnabled(false);
@@ -143,6 +162,8 @@ public class Trivia extends Activity {
 				// enables the answer button
 				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnD);
+				rightLabel.setText("Correct Answers: "+right);
+				wrongLabel.setText("Incorrect Answers: "+wrong);
 			}
 		});
 	}
