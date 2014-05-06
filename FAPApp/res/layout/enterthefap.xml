@@ -4,48 +4,40 @@
     android:layout_height="match_parent"
     android:background="@color/red" >
 
-    <TextView
-        android:id="@+id/enterthefap"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="@string/EnterFapTitle"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TableLayout
-        android:layout_width="220dp"
-        android:layout_height="240dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" >
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            <Button
+                android:id="@+id/trivia"
+                android:layout_width="@dimen/Xlarge_button_width"
+                android:layout_height="@dimen/Xlarge_button_height"
+                android:layout_below="@+id/mapbtn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="34dp"
+                android:background="@drawable/triviabutton"
+                 />
 
             <Button
                 android:id="@+id/mapbtn"
-                android:layout_width="@dimen/large_button_width"
-                android:layout_height="@dimen/large_button_height"
-                android:text="@string/mapBtnTitle" />
-        </TableRow>
+                android:layout_width="@dimen/Xlarge_button_width"
+                android:layout_height="@dimen/Xlarge_button_height"
+                android:layout_alignLeft="@+id/trivia"
+                android:layout_below="@+id/enterthefap"
+                android:layout_marginTop="14dp"
+                android:background="#FFFFFF"
+                android:typeface="monospace"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:text="@string/mapBtnTitle" 
+                />
 
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <Button
-                android:id="@+id/trivia"
-                android:layout_width="@dimen/large_button_width"
-                android:layout_height="@dimen/large_button_height"
-                android:text="@string/Trivia" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
-    </TableLayout>
+            <TextView
+                android:id="@+id/enterthefap"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="28dp"
+                android:gravity="center"
+               	android:typeface="monospace"
+                android:text="@string/EnterFapTitle"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

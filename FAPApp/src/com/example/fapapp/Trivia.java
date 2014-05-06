@@ -7,12 +7,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class Trivia extends Activity {
+	MediaPlayer ding; 
+	MediaPlayer dong; 
 	@SuppressWarnings("rawtypes")
 	static ArrayList questionHistory;
 	String question = "";
@@ -25,7 +28,7 @@ public class Trivia extends Activity {
 	TextView rightLabel, wrongLabel;
 	boolean correct = false;
 	private Context context;
-	int right=0, wrong=0;
+	static int right=0, wrong=0;
 
 	private TextView questionField;
 	public static String answer;
@@ -34,6 +37,9 @@ public class Trivia extends Activity {
 	// page
 	@SuppressWarnings("rawtypes")
 	public void onCreate(Bundle savedInstanceState) {
+		
+		ding = MediaPlayer.create(getApplicationContext(), R.raw.ding);
+		dong = MediaPlayer.create(getApplicationContext(), R.raw.dong);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.trivia);
 		context = this;
@@ -51,7 +57,12 @@ public class Trivia extends Activity {
 		answerBtnB.setEnabled(false);
 		answerBtnC.setEnabled(false);
 		answerBtnD.setEnabled(false);
-
+		rightLabel.setText("Correct Answers: "+right);
+		wrongLabel.setText("Incorrect Answers: "+wrong);
+		
+		
+		
+		
 		backToETF.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent myIntent = new Intent(view.getContext(),
@@ -90,10 +101,13 @@ public class Trivia extends Activity {
 			public void onClick(View view) {
 
 				if (answer.equals("1")) {
+					ding.start();
 					correct = true;
 					right++;
-				}else
+				}else{
+					dong.start();
 					wrong++;
+				}
 				// disables the answer buttons
 				answerBtnA.setEnabled(false);
 				answerBtnB.setEnabled(false);
@@ -110,10 +124,13 @@ public class Trivia extends Activity {
 		answerBtnB.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				if (answer.equals("2")) {
+					ding.start();
 					correct = true;
 					right++;
-				}else
+				}else{
+					dong.start();
 					wrong++;
+				}
 				// disables the answer buttons
 				answerBtnA.setEnabled(false);
 				answerBtnB.setEnabled(false);
@@ -130,10 +147,13 @@ public class Trivia extends Activity {
 		answerBtnC.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				if (answer.equals("3")) {
+					ding.start();
 					correct = true;
 					right++;
-				}else
+				}else{
+					dong.start();
 					wrong++;
+				}
 				// disables the answer buttons
 				answerBtnA.setEnabled(false);
 				answerBtnB.setEnabled(false);
@@ -150,10 +170,13 @@ public class Trivia extends Activity {
 		answerBtnD.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				if (answer.equals("4")) {
+					ding.start();
 					correct = true;
 					right++;
-				}else
+				}else{
+					dong.start();
 					wrong++;
+				}
 				// disables the answer buttons
 				answerBtnA.setEnabled(false);
 				answerBtnB.setEnabled(false);

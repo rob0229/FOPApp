@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 //This class retrieves information from a database and displays the information to the user
 //in the App.
+
 public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 
 	private Context context;
@@ -25,7 +26,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	int questionNumber;
 	String randQuest;
 	String rawString;
-	String rawAnswer;
+	String sizeOfDB;
 	String question = "";
 	Button answerBtnA;
 	Button answerBtnB;
@@ -33,8 +34,8 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	Button answerBtnD;
 	String btnA = "", btnB = "", btnC = "", btnD = "";
 
-	public DatabaseFunctions(Context con, TextView quest, Button a, Button b, Button c,
-			Button d) {
+	public DatabaseFunctions(Context con, TextView quest, Button a, Button b,
+			Button c, Button d) {
 		this.context = con;
 		this.questionField = quest;
 		this.answerBtnA = a;
@@ -44,13 +45,12 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	}
 
 	protected void onPreExecute() {
-		//display a loading message icon here
+		// display a loading message icon here
 		pd = new ProgressDialog(context, R.style.GettingDataDialog);
 		pd.setTitle("Getting next Question...");
 		pd.setMessage("Please wait.");
 		pd.setCancelable(false);
 		pd.setIndeterminate(true);
-		pd.setMax(5);
 		pd.show();
 	}
 
@@ -58,13 +58,11 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	protected String doInBackground(String... arg0) {
 
 		try {
-
+			//connect to server then retrieve the number of questions in the database
 			String link = "http://rkclose.com/getDBSize.php";
-
 			URL url = new URL(link);
 			URLConnection conn = url.openConnection();
 			conn.setDoOutput(true);
-
 			OutputStreamWriter wr = new OutputStreamWriter(
 					conn.getOutputStream());
 
@@ -78,14 +76,9 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 				break;
 			}
 
-			System.out.println("****************DB SIZE sb.toString is : "
-					+ sb.toString());
-
-			rawAnswer = sb.toString();
-
-			randQuest = getRandQuestion(rawAnswer);
-			System.out.println("******RandomQuest # Is " + randQuest);
-			// Playground
+			//converts StringBuffer into a string
+			sizeOfDB = sb.toString();			
+			randQuest = getRandQuestion(sizeOfDB);
 
 			link = "http://rkclose.com/trivia.php";
 
@@ -110,11 +103,8 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 				break;
 			}
 
-			System.out.println("****************echo is : " + sb.toString());
-
 			rawString = sb.toString();
 
-			// EndPlayground
 			parseResponse();
 
 			return question;
@@ -134,21 +124,22 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	}
 
 	public String getRandQuestion(String size) {
+		//converts string to int
 		int sizeOfDB = Integer.parseInt(size);
 		String str = "";
+		//generates a random int from 1 to size of database
 		int questNum = randInt(1, sizeOfDB);
 
 		// checks to see if the random number generated has been generated
-		// before
-		// If not, it will add it to the Trivia.arrayList and return the number
-		// If all the questions have been asked, it will clear the arraylist
-		// and start over
-		// repeating the questions
+		// before. If not, it will add it to the Trivia.arrayList and return the number
+		// If all the questions have been asked, it will clear the arraylist and correct/incorrect
+		// labels and start over repeating the questions
 		do {
 			// Erase question history to start over
 			if (Trivia.questionHistory.size() == sizeOfDB) {
 				Trivia.questionHistory.clear();
-				System.out.println("****111");
+				Trivia.right = 0;
+				Trivia.wrong = 0;
 			}
 			// If the number has not been added yet, add it and return the
 			// string
