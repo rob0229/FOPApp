@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/red" >
+    android:background="@color/green" >
 
             <TextView
                 android:id="@+id/enterthefap"
@@ -38,7 +38,8 @@
                 android:layout_below="@+id/mapbtn"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="69dp"
-                android:background="@drawable/triviabutton" />
+                android:background="@drawable/triviabuttonround" 
+                />
 
             <Button
                 android:id="@+id/mapbtn"

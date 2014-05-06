@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical" 
+  >
+
     <TextView
         android:id="@+id/triviaTitle"
         android:layout_width="match_parent"
@@ -12,10 +13,9 @@
         android:gravity="center"
         android:text="@string/TriviaTitle"
         android:textAlignment="gravity"
-        android:textSize="30sp"
         android:textColor="#009900"
-        android:typeface="monospace" 
-        />
+        android:textSize="30sp"
+        android:typeface="monospace" />
 
     <Button
         android:id="@+id/back"
@@ -26,75 +26,17 @@
         android:layout_marginBottom="21dp"
         android:text="@string/backToETFTitle" />
 
-    <TableLayout
-        android:id="@+id/tableLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nextquestionlabel"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp" 
-        >
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="360dp"
-            android:layout_height="90dp" >
-
-            <Button
-                android:id="@+id/answer1btn"
-                android:layout_width="@dimen/medium_button_width"
-                android:layout_height="@dimen/large_button_height"
-                android:layout_column="1"
-                android:text="@string/answer1" />
-
-            <Button
-                android:id="@+id/answer2btn"
-                android:layout_width="@dimen/medium_button_width"
-                android:layout_height="@dimen/large_button_height"
-                android:layout_column="2"
-                android:text="@string/answer2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="360dp"
-            android:layout_height="90dp" >
-
-            <Button
-                android:id="@+id/answer3btn"
-                android:layout_width="@dimen/medium_button_width"
-                android:layout_height="@dimen/large_button_height"
-                android:layout_column="1"
-                android:text="@string/answer3" />
-
-            <Button
-                android:id="@+id/answer4btn"
-                android:layout_width="@dimen/medium_button_width"
-                android:layout_height="@dimen/large_button_height"
-                android:layout_column="2"
-                android:text="@string/answer4" />
-        </TableRow>
-    </TableLayout>
-
     <TextView
         android:id="@+id/nextquestionlabel"
         android:layout_width="250dp"
         android:layout_height="200dp"
         android:layout_below="@+id/triviaTitle"
         android:layout_centerHorizontal="true"
+        android:background="#FFFFFFFF"
         android:gravity="center"
         android:text="@string/question"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"
-        android:background="#FFFFFFFF" />
-
-    <Button
-        android:id="@+id/nextquestionbtn"
-        android:layout_width="@dimen/medium_button_width"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/back"
-        android:layout_below="@+id/tableLayout1"
-        android:text="@string/NextQuestion" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/questionTitle"
@@ -107,21 +49,63 @@
         android:typeface="monospace" />
 
     <TextView
-        android:id="@+id/rightLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nextquestionbtn"
-        android:layout_marginTop="21dp"
-        android:layout_toLeftOf="@+id/nextquestionbtn"
-        android:text="@string/rightLabel" />
-
-    <TextView
         android:id="@+id/wrongLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/rightLabel"
-        android:layout_below="@+id/rightLabel"
-        android:layout_marginTop="27dp"
+        android:layout_alignLeft="@+id/answer3btn"
+        android:layout_below="@+id/answer3btn"
+        android:layout_marginTop="100dp"
         android:text="@string/wrongLabel" />
+
+    <TextView
+        android:id="@+id/rightLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/answer3btn"
+        android:layout_below="@+id/answer3btn"
+        android:layout_marginTop="70dp"
+        android:text="@string/rightLabel" />
+
+    <Button
+        android:id="@+id/nextquestionbtn"
+        android:layout_width="@dimen/medium_button_width"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/back"
+        android:layout_below="@+id/answer3btn"
+        android:layout_marginTop="15dp"
+        android:text="@string/NextQuestion" />
+
+    <Button
+        android:id="@+id/answer4btn"
+        android:layout_width="@dimen/medium_button_width"
+        android:layout_height="@dimen/large_button_height"
+        android:layout_above="@+id/nextquestionbtn"
+        android:layout_alignLeft="@+id/answer2btn"     
+        android:text="@string/answer4" />
+
+    <Button
+        android:id="@+id/answer1btn"
+        android:layout_width="@dimen/medium_button_width"
+        android:layout_height="@dimen/large_button_height"
+        android:layout_alignLeft="@+id/answer3btn"
+        android:layout_below="@+id/nextquestionlabel"
+        android:text="@string/answer1" />
+
+    <Button
+        android:id="@+id/answer2btn"
+        android:layout_width="@dimen/medium_button_width"
+        android:layout_height="@dimen/large_button_height"
+        android:layout_below="@+id/nextquestionlabel"
+        android:layout_toRightOf="@+id/answer1btn"
+        android:text="@string/answer2" />
+
+    <Button
+        android:id="@+id/answer3btn"
+        android:layout_width="@dimen/medium_button_width"
+        android:layout_height="@dimen/large_button_height"
+        android:layout_alignRight="@+id/questionTitle"
+        android:layout_below="@+id/answer1btn"
+        android:layout_marginRight="60dp"
+        android:text="@string/answer3" />
 
 </RelativeLayout>
