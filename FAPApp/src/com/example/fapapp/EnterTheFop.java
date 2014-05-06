@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 //Home page of the FAPApp. Has buttons that link to other activities
-public class EnterTheFap extends Activity {
+public class EnterTheFop extends Activity {
 
 	Button hensonMapBtn;
 	Button triviaBtn;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.enterthefap);
+		setContentView(R.layout.enterthefop);
 
 		hensonMapBtn = (Button) findViewById(R.id.mapbtn);
 		triviaBtn = (Button) findViewById(R.id.trivia);

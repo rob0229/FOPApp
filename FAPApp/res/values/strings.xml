@@ -3,7 +3,8 @@
 
     <string name="app_name">F.O.P. App</string>
     <string name="action_settings">Settings</string>
-    <string name="EnterFapTitle">Welcome to the F.O.P. App\nFreshman Orientation Program</string>
+    <string name="EnterFapTitle">Welcome to the F.O.P. App</string>
+    <string name="EnterFapSubTitle">Freshman Orientation Program</string>
     <string name="mapBtnTitle">Map of Henson</string>
     <string name="backToETFTitle">back</string>
     <string name="question">Click "Next Question" Button</string>

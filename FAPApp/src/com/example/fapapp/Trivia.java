@@ -14,8 +14,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Trivia extends Activity {
-	MediaPlayer ding; 
-	MediaPlayer dong; 
+	MediaPlayer ding;
+	MediaPlayer dong;
 	@SuppressWarnings("rawtypes")
 	static ArrayList questionHistory;
 	String question = "";
@@ -28,7 +28,7 @@ public class Trivia extends Activity {
 	TextView rightLabel, wrongLabel;
 	boolean correct = false;
 	private Context context;
-	static int right=0, wrong=0;
+	static int right = 0, wrong = 0;
 
 	private TextView questionField;
 	public static String answer;
@@ -37,7 +37,7 @@ public class Trivia extends Activity {
 	// page
 	@SuppressWarnings("rawtypes")
 	public void onCreate(Bundle savedInstanceState) {
-		
+
 		ding = MediaPlayer.create(getApplicationContext(), R.raw.ding);
 		dong = MediaPlayer.create(getApplicationContext(), R.raw.dong);
 		super.onCreate(savedInstanceState);
@@ -57,16 +57,13 @@ public class Trivia extends Activity {
 		answerBtnB.setEnabled(false);
 		answerBtnC.setEnabled(false);
 		answerBtnD.setEnabled(false);
-		rightLabel.setText("Correct Answers: "+right);
-		wrongLabel.setText("Incorrect Answers: "+wrong);
-		
-		
-		
-		
+		rightLabel.setText("Correct Answers: " + right);
+		wrongLabel.setText("Incorrect Answers: " + wrong);
+
 		backToETF.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent myIntent = new Intent(view.getContext(),
-						EnterTheFap.class);
+						EnterTheFop.class);
 				startActivityForResult(myIntent, 0);
 				finish();
 			}
@@ -77,14 +74,10 @@ public class Trivia extends Activity {
 				answer = "";
 				correct = false;
 				// Resets the button color
-				answerBtnA
-						.setBackgroundResource(android.R.drawable.btn_default);
-				answerBtnB
-						.setBackgroundResource(android.R.drawable.btn_default);
-				answerBtnC
-						.setBackgroundResource(android.R.drawable.btn_default);
-				answerBtnD
-						.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnA.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnB.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnC.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnD.setBackgroundResource(android.R.drawable.btn_default);
 				// enables the answer buttons
 				answerBtnA.setEnabled(true);
 				answerBtnB.setEnabled(true);
@@ -104,7 +97,7 @@ public class Trivia extends Activity {
 					ding.start();
 					correct = true;
 					right++;
-				}else{
+				} else {
 					dong.start();
 					wrong++;
 				}
@@ -116,8 +109,8 @@ public class Trivia extends Activity {
 				// enables the next question button
 				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnA);
-				rightLabel.setText("Correct Answers: "+right);
-				wrongLabel.setText("Incorrect Answers: "+wrong);
+				rightLabel.setText("Correct Answers: " + right);
+				wrongLabel.setText("Incorrect Answers: " + wrong);
 			}
 		});
 
@@ -127,7 +120,7 @@ public class Trivia extends Activity {
 					ding.start();
 					correct = true;
 					right++;
-				}else{
+				} else {
 					dong.start();
 					wrong++;
 				}
@@ -139,8 +132,8 @@ public class Trivia extends Activity {
 				// enables the next question button
 				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnB);
-				rightLabel.setText("Correct Answers: "+right);
-				wrongLabel.setText("Incorrect Answers: "+wrong);
+				rightLabel.setText("Correct Answers: " + right);
+				wrongLabel.setText("Incorrect Answers: " + wrong);
 			}
 		});
 
@@ -150,7 +143,7 @@ public class Trivia extends Activity {
 					ding.start();
 					correct = true;
 					right++;
-				}else{
+				} else {
 					dong.start();
 					wrong++;
 				}
@@ -162,8 +155,8 @@ public class Trivia extends Activity {
 				// enables the answer button
 				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnC);
-				rightLabel.setText("Correct Answers: "+right);
-				wrongLabel.setText("Incorrect Answers: "+wrong);
+				rightLabel.setText("Correct Answers: " + right);
+				wrongLabel.setText("Incorrect Answers: " + wrong);
 			}
 		});
 
@@ -173,7 +166,7 @@ public class Trivia extends Activity {
 					ding.start();
 					correct = true;
 					right++;
-				}else{
+				} else {
 					dong.start();
 					wrong++;
 				}
@@ -185,8 +178,8 @@ public class Trivia extends Activity {
 				// enables the answer button
 				nextQuestion.setEnabled(true);
 				displayAnswer(answerBtnD);
-				rightLabel.setText("Correct Answers: "+right);
-				wrongLabel.setText("Incorrect Answers: "+wrong);
+				rightLabel.setText("Correct Answers: " + right);
+				wrongLabel.setText("Incorrect Answers: " + wrong);
 			}
 		});
 	}
