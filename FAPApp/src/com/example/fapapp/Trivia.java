@@ -36,7 +36,6 @@ public class Trivia extends Activity {
 
 	private TextView questionField;
 	public static String answer;
-	
 
 	// instantiates all the variables and UI interface components on the Trivia
 	// page
@@ -48,7 +47,7 @@ public class Trivia extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.trivia);
 		context = this;
-		
+
 		questionHistory = new ArrayList();
 		questionField = (TextView) findViewById(R.id.nextquestionlabel);
 		answerBtnA = (Button) findViewById(R.id.answer1btn);
@@ -56,7 +55,7 @@ public class Trivia extends Activity {
 		answerBtnC = (Button) findViewById(R.id.answer3btn);
 		answerBtnD = (Button) findViewById(R.id.answer4btn);
 		nextQuestion = (Button) findViewById(R.id.nextquestionbtn);
-		resetBtn=(Button) findViewById(R.id.resetbtn);
+		resetBtn = (Button) findViewById(R.id.resetbtn);
 		rightLabel = (TextView) findViewById(R.id.rightLabel);
 		wrongLabel = (TextView) findViewById(R.id.wrongLabel);
 		backToETF = (Button) findViewById(R.id.back);
@@ -66,7 +65,6 @@ public class Trivia extends Activity {
 		answerBtnD.setEnabled(false);
 		rightLabel.setText("Correct Answers: " + right);
 		wrongLabel.setText("Incorrect Answers: " + wrong);
-		
 
 		backToETF.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -76,39 +74,42 @@ public class Trivia extends Activity {
 				finish();
 			}
 		});
-		
-		//resets the question score and questionHistory Array
+
+		// resets the question score and questionHistory Array
 		resetBtn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				reset();
 			}
 		});
-		
 
 		nextQuestion.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				answer = "";
 				correct = false;
 				// Resets the button color
-				answerBtnA.setBackgroundResource(android.R.drawable.btn_default);
-				answerBtnB.setBackgroundResource(android.R.drawable.btn_default);
-				answerBtnC.setBackgroundResource(android.R.drawable.btn_default);
-				answerBtnD.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnA
+						.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnB
+						.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnC
+						.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnD
+						.setBackgroundResource(android.R.drawable.btn_default);
 				// enables the answer buttons
 				answerBtnA.setEnabled(true);
 				answerBtnB.setEnabled(true);
 				answerBtnC.setEnabled(true);
 				answerBtnD.setEnabled(true);
-				
+
 				// disables the next question button
 				nextQuestion.setEnabled(false);
-				if(!checkDone()){
+				if (!checkDone()) {
 					getNextQuestion();
-				}else{
-						done(view);
+				} else {
+					done(view);
 				}
 				firstQuestion = false;
-				
+
 			}
 		});
 
@@ -214,40 +215,42 @@ public class Trivia extends Activity {
 
 		new DatabaseFunctions(context, questionField, answerBtnA, answerBtnB,
 				answerBtnC, answerBtnD).execute();
-		
 
 	}
-	
-	public boolean checkDone(){
-		boolean d = false;		
-		if ((sizeOfDB == (right+wrong) ) && (firstQuestion == false)){
+
+	public boolean checkDone() {
+		boolean d = false;
+		if ((sizeOfDB == (right + wrong)) && (firstQuestion == false)) {
 			d = true;
 		}
 		return d;
 	}
-	
-	public void done(final View view){
-		
+
+	public void done(final View view) {
+
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 				context);
- 
-			// set title
-			alertDialogBuilder.setTitle("You answered all the questions!");
- 
-			// set dialog message
-			alertDialogBuilder
-				.setMessage("You answered "+right+" correct and " + wrong + " incorrect. \nDo you want to try again?")
+
+		// set title
+		alertDialogBuilder.setTitle("You answered all the questions!");
+
+		// set dialog message
+		alertDialogBuilder
+				.setMessage(
+						"You answered " + right + " correct and " + wrong
+								+ " incorrect. \nDo you want to try again?")
 				.setCancelable(false)
-				.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,int id) {
+				.setPositiveButton("Yes",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
 								reset();
-								firstQuestion=true;
+								firstQuestion = true;
 								dialog.cancel();
-						
-					}
-				  })
-				.setNegativeButton("No",new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,int id) {
+
+							}
+						})
+				.setNegativeButton("No", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
 						// if this button is clicked, just close
 						// the dialog box and do nothing
 						Intent myIntent = new Intent(view.getContext(),
@@ -256,18 +259,18 @@ public class Trivia extends Activity {
 						finish();
 					}
 				});
- 
-				// create alert dialog
-				AlertDialog alertDialog = alertDialogBuilder.create();
- 
-				// show it
-				alertDialog.show();
-		
+
+		// create alert dialog
+		AlertDialog alertDialog = alertDialogBuilder.create();
+
+		// show it
+		alertDialog.show();
+
 	}
-	
-	//resets the button text, question text and score
-	public void reset(){
-		right = 0; 
+
+	// resets the button text, question text and score
+	public void reset() {
+		right = 0;
 		wrong = 0;
 		rightLabel.setText("Correct Answers: " + right);
 		wrongLabel.setText("Incorrect Answers: " + wrong);
@@ -284,14 +287,14 @@ public class Trivia extends Activity {
 		answerBtnB.setText("");
 		answerBtnC.setText("");
 		answerBtnD.setText("");
-		
+
 		// disables the next question button
 		nextQuestion.setEnabled(true);
-		
+
 		questionField.setText("Click \"Next Question\" button");
-		
+
 		questionHistory.clear();
-		
+
 	}
 
 	// returns a random integer within min/max inclusive

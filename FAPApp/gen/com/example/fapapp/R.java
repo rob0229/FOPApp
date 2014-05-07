@@ -33,12 +33,13 @@ public final class R {
         public static final int title_text_size=0x7f060002;
     }
     public static final class drawable {
-        public static final int henson=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int iconimage=0x7f020002;
-        public static final int map=0x7f020003;
-        public static final int popup_bg=0x7f020004;
-        public static final int triviabuttonround=0x7f020005;
+        public static final int color_button=0x7f020000;
+        public static final int henson=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int iconimage=0x7f020003;
+        public static final int map=0x7f020004;
+        public static final int popup_bg=0x7f020005;
+        public static final int triviabuttonround=0x7f020006;
     }
     public static final class id {
         public static final int action_settings=0x7f0a0016;
@@ -108,11 +109,15 @@ public final class R {
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
 
+
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
+
 
         
 
@@ -133,5 +138,6 @@ public final class R {
          */
         public static final int AppTheme=0x7f080001;
         public static final int GettingDataDialog=0x7f080002;
+        public static final int button_text=0x7f080003;
     }
 }
