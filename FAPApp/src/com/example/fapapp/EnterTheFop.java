@@ -26,7 +26,6 @@ public class EnterTheFop extends Activity {
 				finish();
 			}
 		});
-
 		triviaBtn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent myIntent = new Intent(view.getContext(), Trivia.class);

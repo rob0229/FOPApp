@@ -58,7 +58,8 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	protected String doInBackground(String... arg0) {
 
 		try {
-			//connect to server then retrieve the number of questions in the database
+			// connect to server then retrieve the number of questions in the
+			// database
 			String link = "http://rkclose.com/getDBSize.php";
 			URL url = new URL(link);
 			URLConnection conn = url.openConnection();
@@ -76,8 +77,9 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 				break;
 			}
 
-			//converts StringBuffer into a string
-			sizeOfDB = sb.toString();			
+			// converts StringBuffer into a string
+			sizeOfDB = sb.toString();
+
 			randQuest = getRandQuestion(sizeOfDB);
 
 			link = "http://rkclose.com/trivia.php";
@@ -124,15 +126,18 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	}
 
 	public String getRandQuestion(String size) {
-		//converts string to int
+		// converts string to int
 		int sizeOfDB = Integer.parseInt(size);
+		Trivia.sizeOfDB = sizeOfDB;
 		String str = "";
-		//generates a random int from 1 to size of database
+		// generates a random int from 1 to size of database
 		int questNum = randInt(1, sizeOfDB);
 
 		// checks to see if the random number generated has been generated
-		// before. If not, it will add it to the Trivia.arrayList and return the number
-		// If all the questions have been asked, it will clear the arraylist and correct/incorrect
+		// before. If not, it will add it to the Trivia.arrayList and return the
+		// number
+		// If all the questions have been asked, it will clear the arraylist and
+		// correct/incorrect
 		// labels and start over repeating the questions
 		do {
 			// Erase question history to start over
@@ -204,9 +209,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 				// gets the answer and exits for loop
 				answerChar = rawString.charAt(i + 1);
 				Trivia.answer += answerChar;
-				System.out.println("The answer inside DBF line 87 is : "
-						+ rawString.charAt(i + 1) + " answer = : "
-						+ Trivia.answer);
+
 				break;
 			}
 		}

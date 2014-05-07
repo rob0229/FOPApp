@@ -7,7 +7,7 @@
     <string name="EnterFapSubTitle">Freshman Orientation Program</string>
     <string name="mapBtnTitle">Map of Henson</string>
     <string name="backToETFTitle">back</string>
-    <string name="question">Click "Next Question" Button</string>
+    <string name="question">Click \"Next Question\" Button</string>
     <string name="NextQuestion">Next Question</string>
     <string name="answer1">A</string>
     <string name="answer2">B</string>
@@ -22,5 +22,6 @@
     <string name="Description">\n 101: Lounge \n 105: Computer Lab \n 117: Tutoring Room \n Food: Sandwiches and snacks!</string>
 	<string name="rightLabel">Correct Answers: 0</string>
 	<string name="wrongLabel">Incorrect Answers: 0</string>
+	<string name="resetbtn">Reset</string>
     
 </resources>

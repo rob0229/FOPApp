@@ -5,6 +5,8 @@
     android:orientation="vertical" 
   >
 
+    
+    
     <TextView
         android:id="@+id/triviaTitle"
         android:layout_width="match_parent"
@@ -16,6 +18,16 @@
         android:textColor="#009900"
         android:textSize="30sp"
         android:typeface="monospace" />
+    
+    <Button 
+        android:id="@+id/resetbtn"
+        android:layout_width="@dimen/medium_button_width"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/back"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="21dp"
+        android:text="@string/resetbtn" 
+        />
 
     <Button
         android:id="@+id/back"
