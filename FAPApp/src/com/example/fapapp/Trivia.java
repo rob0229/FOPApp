@@ -253,6 +253,7 @@ public class Trivia extends Activity {
 					public void onClick(DialogInterface dialog, int id) {
 						// if this button is clicked, just close
 						// the dialog box and do nothing
+						reset();
 						Intent myIntent = new Intent(view.getContext(),
 								EnterTheFop.class);
 						startActivityForResult(myIntent, 0);
