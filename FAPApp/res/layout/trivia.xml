@@ -2,11 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-  >
+    android:background="@drawable/background"
+    android:orientation="vertical" >
 
-    
-    
     <TextView
         android:id="@+id/triviaTitle"
         android:layout_width="match_parent"
@@ -18,16 +16,15 @@
         android:textColor="#009900"
         android:textSize="30sp"
         android:typeface="monospace" />
-    
-    <Button 
+
+    <Button
         android:id="@+id/resetbtn"
         android:layout_width="@dimen/medium_button_width"
         android:layout_height="wrap_content"
         android:layout_above="@+id/back"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="21dp"
-        android:text="@string/resetbtn" 
-        />
+        android:text="@string/resetbtn" />
 
     <Button
         android:id="@+id/back"
@@ -44,21 +41,11 @@
         android:layout_height="200dp"
         android:layout_below="@+id/triviaTitle"
         android:layout_centerHorizontal="true"
-        android:background="#FFFFFFFF"
+       
         android:gravity="center"
         android:text="@string/question"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/questionTitle"
-        android:layout_width="120dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/nextquestionlabel"
-        android:layout_centerHorizontal="true"
-        android:text="@string/Question"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:typeface="monospace" />
 
     <TextView
         android:id="@+id/wrongLabel"
@@ -67,7 +54,9 @@
         android:layout_alignLeft="@+id/answer3btn"
         android:layout_below="@+id/answer3btn"
         android:layout_marginTop="100dp"
-        android:text="@string/wrongLabel" />
+        android:text="@string/wrongLabel" 
+        android:typeface="monospace"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/rightLabel"
@@ -76,7 +65,9 @@
         android:layout_alignLeft="@+id/answer3btn"
         android:layout_below="@+id/answer3btn"
         android:layout_marginTop="70dp"
-        android:text="@string/rightLabel" />
+        android:text="@string/rightLabel" 
+        android:typeface="monospace"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/nextquestionbtn"
@@ -92,7 +83,7 @@
         android:layout_width="@dimen/medium_button_width"
         android:layout_height="@dimen/large_button_height"
         android:layout_above="@+id/nextquestionbtn"
-        android:layout_alignLeft="@+id/answer2btn"     
+        android:layout_alignLeft="@+id/answer2btn"
         android:text="@string/answer4" />
 
     <Button
@@ -115,9 +106,10 @@
         android:id="@+id/answer3btn"
         android:layout_width="@dimen/medium_button_width"
         android:layout_height="@dimen/large_button_height"
-        android:layout_alignRight="@+id/questionTitle"
+        android:layout_alignRight="@+id/nextquestionlabel"
+        android:layout_centerInParent="true"
         android:layout_below="@+id/answer1btn"
-        android:layout_marginRight="60dp"
+        android:layout_marginRight="125dp"
         android:text="@string/answer3" />
 
 </RelativeLayout>

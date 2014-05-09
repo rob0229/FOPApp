@@ -54,11 +54,20 @@ public class Trivia extends Activity {
 		answerBtnB = (Button) findViewById(R.id.answer2btn);
 		answerBtnC = (Button) findViewById(R.id.answer3btn);
 		answerBtnD = (Button) findViewById(R.id.answer4btn);
+		answerBtnA.setBackgroundResource(android.R.drawable.btn_default);
+		answerBtnB.setBackgroundResource(android.R.drawable.btn_default);
+		answerBtnC.setBackgroundResource(android.R.drawable.btn_default);
+		answerBtnD.setBackgroundResource(android.R.drawable.btn_default);
+	
 		nextQuestion = (Button) findViewById(R.id.nextquestionbtn);
+		nextQuestion.setBackgroundResource(android.R.drawable.btn_default);
 		resetBtn = (Button) findViewById(R.id.resetbtn);
+		resetBtn.setBackgroundResource(android.R.drawable.btn_default);
 		rightLabel = (TextView) findViewById(R.id.rightLabel);
 		wrongLabel = (TextView) findViewById(R.id.wrongLabel);
+		
 		backToETF = (Button) findViewById(R.id.back);
+		backToETF.setBackgroundResource(android.R.drawable.btn_default);
 		answerBtnA.setEnabled(false);
 		answerBtnB.setEnabled(false);
 		answerBtnC.setEnabled(false);
@@ -284,10 +293,10 @@ public class Trivia extends Activity {
 		answerBtnB.setEnabled(false);
 		answerBtnC.setEnabled(false);
 		answerBtnD.setEnabled(false);
-		answerBtnA.setText("");
-		answerBtnB.setText("");
-		answerBtnC.setText("");
-		answerBtnD.setText("");
+		answerBtnA.setText("A");
+		answerBtnB.setText("B");
+		answerBtnC.setText("C");
+		answerBtnD.setText("D");
 
 		// disables the next question button
 		nextQuestion.setEnabled(true);

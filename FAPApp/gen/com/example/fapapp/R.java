@@ -33,20 +33,21 @@ public final class R {
         public static final int title_text_size=0x7f060002;
     }
     public static final class drawable {
-        public static final int color_button=0x7f020000;
-        public static final int henson=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int iconimage=0x7f020003;
-        public static final int map=0x7f020004;
-        public static final int popup_bg=0x7f020005;
-        public static final int triviabuttonround=0x7f020006;
+        public static final int background=0x7f020000;
+        public static final int color_button=0x7f020001;
+        public static final int henson=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int iconimage=0x7f020004;
+        public static final int map=0x7f020005;
+        public static final int popup_bg=0x7f020006;
+        public static final int triviabuttonround=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0016;
-        public static final int answer1btn=0x7f0a0015;
-        public static final int answer2btn=0x7f0a0014;
-        public static final int answer3btn=0x7f0a0010;
-        public static final int answer4btn=0x7f0a0013;
+        public static final int action_settings=0x7f0a0015;
+        public static final int answer1btn=0x7f0a0014;
+        public static final int answer2btn=0x7f0a0013;
+        public static final int answer3btn=0x7f0a000f;
+        public static final int answer4btn=0x7f0a0012;
         public static final int back=0x7f0a000c;
         public static final int backtoetf=0x7f0a0006;
         public static final int close=0x7f0a0009;
@@ -54,17 +55,16 @@ public final class R {
         public static final int enterthefapsub=0x7f0a0001;
         public static final int hensonMapView=0x7f0a0004;
         public static final int mapbtn=0x7f0a0003;
-        public static final int nextquestionbtn=0x7f0a0012;
+        public static final int nextquestionbtn=0x7f0a0011;
         public static final int nextquestionlabel=0x7f0a000d;
         public static final int popup=0x7f0a0007;
-        public static final int questionTitle=0x7f0a000e;
         public static final int resetbtn=0x7f0a000b;
-        public static final int rightLabel=0x7f0a0011;
+        public static final int rightLabel=0x7f0a0010;
         public static final int show_popup=0x7f0a0005;
         public static final int textView1=0x7f0a0008;
         public static final int trivia=0x7f0a0002;
         public static final int triviaTitle=0x7f0a000a;
-        public static final int wrongLabel=0x7f0a000f;
+        public static final int wrongLabel=0x7f0a000e;
     }
     public static final class layout {
         public static final int enterthefop=0x7f030000;
