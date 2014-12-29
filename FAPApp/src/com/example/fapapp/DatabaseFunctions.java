@@ -58,12 +58,9 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	protected String doInBackground(String... arg0) {
 
 		try {
-<<<<<<< HEAD
+
 			//connect to server then retrieve the number of questions in the database
-=======
-			// connect to server then retrieve the number of questions in the
-			// database
->>>>>>> Rob
+
 			String link = "http://rkclose.com/FOP/getDBSize.php";
 			URL url = new URL(link);
 			URLConnection conn = url.openConnection();
