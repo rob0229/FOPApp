@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -14,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Trivia extends Activity {
+	boolean firstQuestion = true;
 	MediaPlayer ding;
 	MediaPlayer dong;
 	@SuppressWarnings("rawtypes")
@@ -25,10 +28,11 @@ public class Trivia extends Activity {
 	Button answerBtnB;
 	Button answerBtnC;
 	Button answerBtnD;
+	Button resetBtn;
 	TextView rightLabel, wrongLabel;
 	boolean correct = false;
 	private Context context;
-	static int right = 0, wrong = 0;
+	static int right = 0, wrong = 0, sizeOfDB = 0;;
 
 	private TextView questionField;
 	public static String answer;
@@ -43,16 +47,27 @@ public class Trivia extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.trivia);
 		context = this;
+
 		questionHistory = new ArrayList();
 		questionField = (TextView) findViewById(R.id.nextquestionlabel);
 		answerBtnA = (Button) findViewById(R.id.answer1btn);
 		answerBtnB = (Button) findViewById(R.id.answer2btn);
 		answerBtnC = (Button) findViewById(R.id.answer3btn);
 		answerBtnD = (Button) findViewById(R.id.answer4btn);
+		answerBtnA.setBackgroundResource(android.R.drawable.btn_default);
+		answerBtnB.setBackgroundResource(android.R.drawable.btn_default);
+		answerBtnC.setBackgroundResource(android.R.drawable.btn_default);
+		answerBtnD.setBackgroundResource(android.R.drawable.btn_default);
+	
 		nextQuestion = (Button) findViewById(R.id.nextquestionbtn);
+		nextQuestion.setBackgroundResource(android.R.drawable.btn_default);
+		resetBtn = (Button) findViewById(R.id.resetbtn);
+		resetBtn.setBackgroundResource(android.R.drawable.btn_default);
 		rightLabel = (TextView) findViewById(R.id.rightLabel);
 		wrongLabel = (TextView) findViewById(R.id.wrongLabel);
+		
 		backToETF = (Button) findViewById(R.id.back);
+		backToETF.setBackgroundResource(android.R.drawable.btn_default);
 		answerBtnA.setEnabled(false);
 		answerBtnB.setEnabled(false);
 		answerBtnC.setEnabled(false);
@@ -69,24 +84,41 @@ public class Trivia extends Activity {
 			}
 		});
 
+		// resets the question score and questionHistory Array
+		resetBtn.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				reset();
+			}
+		});
+
 		nextQuestion.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				answer = "";
 				correct = false;
 				// Resets the button color
-				answerBtnA.setBackgroundResource(android.R.drawable.btn_default);
-				answerBtnB.setBackgroundResource(android.R.drawable.btn_default);
-				answerBtnC.setBackgroundResource(android.R.drawable.btn_default);
-				answerBtnD.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnA
+						.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnB
+						.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnC
+						.setBackgroundResource(android.R.drawable.btn_default);
+				answerBtnD
+						.setBackgroundResource(android.R.drawable.btn_default);
 				// enables the answer buttons
 				answerBtnA.setEnabled(true);
 				answerBtnB.setEnabled(true);
 				answerBtnC.setEnabled(true);
 				answerBtnD.setEnabled(true);
+
 				// disables the next question button
 				nextQuestion.setEnabled(false);
+				if (!checkDone()) {
+					getNextQuestion();
+				} else {
+					done(view);
+				}
+				firstQuestion = false;
 
-				getNextQuestion();
 			}
 		});
 
@@ -192,7 +224,86 @@ public class Trivia extends Activity {
 
 		new DatabaseFunctions(context, questionField, answerBtnA, answerBtnB,
 				answerBtnC, answerBtnD).execute();
-		System.out.println("Answer is = " + answer);
+
+	}
+
+	public boolean checkDone() {
+		boolean d = false;
+		if ((sizeOfDB == (right + wrong)) && (firstQuestion == false)) {
+			d = true;
+		}
+		return d;
+	}
+
+	public void done(final View view) {
+
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+				context);
+
+		// set title
+		alertDialogBuilder.setTitle("You answered all the questions!");
+
+		// set dialog message
+		alertDialogBuilder
+				.setMessage(
+						"You answered " + right + " correct and " + wrong
+								+ " incorrect. \nDo you want to try again?")
+				.setCancelable(false)
+				.setPositiveButton("Yes",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								reset();
+								firstQuestion = true;
+								dialog.cancel();
+
+							}
+						})
+				.setNegativeButton("No", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						// if this button is clicked, just close
+						// the dialog box and do nothing
+						reset();
+						Intent myIntent = new Intent(view.getContext(),
+								EnterTheFop.class);
+						startActivityForResult(myIntent, 0);
+						finish();
+					}
+				});
+
+		// create alert dialog
+		AlertDialog alertDialog = alertDialogBuilder.create();
+
+		// show it
+		alertDialog.show();
+
+	}
+
+	// resets the button text, question text and score
+	public void reset() {
+		right = 0;
+		wrong = 0;
+		rightLabel.setText("Correct Answers: " + right);
+		wrongLabel.setText("Incorrect Answers: " + wrong);
+		answerBtnA.setBackgroundResource(android.R.drawable.btn_default);
+		answerBtnB.setBackgroundResource(android.R.drawable.btn_default);
+		answerBtnC.setBackgroundResource(android.R.drawable.btn_default);
+		answerBtnD.setBackgroundResource(android.R.drawable.btn_default);
+		// enables the answer buttons
+		answerBtnA.setEnabled(false);
+		answerBtnB.setEnabled(false);
+		answerBtnC.setEnabled(false);
+		answerBtnD.setEnabled(false);
+		answerBtnA.setText("A");
+		answerBtnB.setText("B");
+		answerBtnC.setText("C");
+		answerBtnD.setText("D");
+
+		// disables the next question button
+		nextQuestion.setEnabled(true);
+
+		questionField.setText("Click \"Next Question\" button");
+
+		questionHistory.clear();
 
 	}
 
