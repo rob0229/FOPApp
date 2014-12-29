@@ -59,7 +59,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 
 		try {
 			//connect to server then retrieve the number of questions in the database
-			String link = "http://rkclose.com/getDBSize.php";
+			String link = "http://rkclose.com/FOP/getDBSize.php";
 			URL url = new URL(link);
 			URLConnection conn = url.openConnection();
 			conn.setDoOutput(true);
@@ -80,7 +80,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 			sizeOfDB = sb.toString();			
 			randQuest = getRandQuestion(sizeOfDB);
 
-			link = "http://rkclose.com/trivia.php";
+			link = "http://rkclose.com/FOP/trivia.php";
 
 			String data = URLEncoder.encode("NUM", "UTF-8") + "="
 					+ URLEncoder.encode(randQuest, "UTF-8");
