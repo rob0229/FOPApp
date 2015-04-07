@@ -17,22 +17,23 @@ import android.widget.TextView;
 
 public class Trivia extends Activity {
 	boolean firstQuestion = true;
-	MediaPlayer ding;
-	MediaPlayer dong;
+	private MediaPlayer ding;
+	private MediaPlayer dong;
 	@SuppressWarnings("rawtypes")
 	static ArrayList questionHistory;
-	String question = "";
-	Button backToETF;
-	Button nextQuestion;
-	Button answerBtnA;
-	Button answerBtnB;
-	Button answerBtnC;
-	Button answerBtnD;
-	Button resetBtn;
-	TextView rightLabel, wrongLabel;
-	boolean correct = false;
+	private String question = "";
+	private Button backToETF;
+	private Button nextQuestion;
+	private Button answerBtnA;
+	private Button answerBtnB;
+	private Button answerBtnC;
+	private Button answerBtnD;
+	private Button resetBtn;
+	private TextView rightLabel, wrongLabel;
+	private boolean correct = false;
 	private Context context;
-	static int right = 0, wrong = 0, sizeOfDB = 0;;
+	static int right = 0, wrong = 0;
+	private static int sizeOfDB = 0;
 
 	private TextView questionField;
 	public static String answer;
@@ -320,5 +321,12 @@ public class Trivia extends Activity {
 			btn.setBackgroundColor(Color.GREEN);
 		} else
 			btn.setBackgroundColor(Color.RED);
+	}
+	
+	public int getsizeOfDB(){
+		return sizeOfDB;	
+	}
+	public static void setsizeOfDB(int s){
+		sizeOfDB = s;	
 	}
 }

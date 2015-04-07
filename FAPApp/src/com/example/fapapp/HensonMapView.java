@@ -79,8 +79,8 @@ public class HensonMapView extends Activity {
 	// The method that displays the popup.
 	@SuppressWarnings("deprecation")
 	private void showPopup(final Activity context, Point p) {
-		int popupWidth = 700;
-		int popupHeight = 550;
+		int popupWidth = 350;
+		int popupHeight = 300;
 
 		// Inflate the popup_layout.xml
 		LinearLayout viewGroup = (LinearLayout) context
@@ -99,7 +99,7 @@ public class HensonMapView extends Activity {
 		// Some offset to align the popup a bit to the right, and a bit down,
 		// relative to button's position.
 		int OFFSET_X = 0;
-		int OFFSET_Y = 120;
+		int OFFSET_Y = 75;
 
 		// Clear the default translucent background
 		popup.setBackgroundDrawable(new BitmapDrawable());

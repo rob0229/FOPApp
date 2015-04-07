@@ -128,7 +128,7 @@ public class DatabaseFunctions extends AsyncTask<String, Void, String> {
 	public String getRandQuestion(String size) {
 		// converts string to int
 		int sizeOfDB = Integer.parseInt(size);
-		Trivia.sizeOfDB = sizeOfDB;
+		Trivia.setsizeOfDB(sizeOfDB);
 		String str = "";
 		// generates a random int from 1 to size of database
 		int questNum = randInt(1, sizeOfDB);

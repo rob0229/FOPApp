@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-//Home page of the FAPApp. Has buttons that link to other activities
+//Home page of the FOPApp. Has buttons that link to other activities
 public class EnterTheFop extends Activity {
 
 	Button hensonMapBtn;
